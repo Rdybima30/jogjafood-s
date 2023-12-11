@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Menu</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../static/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Bootstrap requirement jQuery pada posisi pertama, kemudian Popper.js, danyang terakhit Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- edit section start -->
+    <section class="edit" id="edit">
+        <div class="container">
+            <form>
+                <div class="inputBox">
+                    <div class="input">
+                        <label for="floatingInput">Judul Menu</label>
+                        <input type="text" class="form-control input" id="judul" placeholder="Masukkan judul menu">
+                    </div>
+                    <div class="input">
+                        <label for="floatingInput">Upload gambar</label>
+                        <div class="control is-expanded">
+                            <div class="file has-name">
+                                <label class="file-label" style="width: 100%">
+                                    <input id="input-pic" class="file-input" type="file" name="resume" style="width: 100%; border: 1px solid grey; border-radius: 5px;">
+                                    <span id="file-name" class="file-name" style="width: 100%; max-width: 100%"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="floatingInput">Deskripsi</label>
+                        <textarea class="form-control" placeholder="Tuliskan deskripsi menu"
+                            id="floatingTextarea2"></textarea>
+                    </div>
+                    <div class="input">
+                        <label for="floatingInput">Harga</label>
+                        <input type="text" class="form-control input" id="judul" placeholder="Masukkan harga menu">
+                    </div>
+                    <div class="input">
+                        <label for="floatingInput">Lokasi</label>
+                        <input type="text" class="form-control input" id="judul" placeholder="Masukkan lokas menu">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary save-button" style="float: right;">Cancel</button>
+                <button type="close" class="btn btn-secondary close-button" style="float: right;">Save</button>
+            </form>
+        </div>
+    </section>
+    <!-- edit section end -->
+
+</body>
+
+</html>
