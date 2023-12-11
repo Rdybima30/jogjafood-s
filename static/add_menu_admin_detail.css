@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root {
+    --gold: #A66417;
+    --bluelack: #192a56;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* css registrasi start */
+/* mengatur warna backgroud form */
+form {
+    background-color: rgba(0, 0, 0, .7);
+    box-shadow: --box-shadow;
+}
+
+/* mengatur border dan padding class form-container */
+.form-container {
+    border-radius: 10px;
+    padding: 30px;
+    font-size: 18px;
+    color: #fafafa;
+    margin-top: 50px;
+
+}
+
+.btn:hover {
+    background: var(--gold);
+    letter-spacing: .1rem;
+}
+
+.btn {
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+}
+
+/* css registrasi end */
+
+/* css faq start */
+.sub-heading {
+    text-align: center;
+    color: var(--gold);
+    font-size: 30px;
+    padding-top: 15px;
+}
+
+.heading {
+    text-align: center;
+    color: var(--black);
+    font-size: 20px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.faq form {
+    max-width: 90rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    border: 2px solid rgba(0, 0, 0, .2);
+    background: #fff;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.faq form .inputBox .input {
+    width: 100%;
+}
+
+.faq form .inputBox .input label {
+    display: block;
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.faq form .inputBox .input select {
+    background: #eee;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 15px;
+    text-transform: none;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.faq form .inputBox .input textarea {
+    background: #eee;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 15px;
+    color: var(--black);
+    text-transform: none;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.faq form .inputBox .input select:focus,
+.faq form .inputBox .input textarea:focus {
+    border: 2px solid var(--blue);
+}
+
+.faq form .inputBox .input textarea {
+    height: 50px;
+}
+
+.faq form button {
+    margin-top: 12px;
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+}
+
+.faq form button:hover {
+    background: var(--gold);
+    letter-spacing: .1rem;
+}
+
+/* css faq end */
+
+/* css review start */
+.review .slide {
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    border: 2px solid rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    position: relative;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+    box-sizing: content-box;
+}
+
+.review .slide .fa-quote-right {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 6rem;
+    color: #ccc;
+}
+
+.review .slide .user {
+    display: flex;
+    gap: 12px;
+    /* mengatur jarak atau celah antara elemen */
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+.review .slide .user img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review .slide .user h3 {
+    color: var(--black);
+    font-size: 20px;
+    padding-bottom: 12px;
+}
+
+.review .slide .user i {
+    font-size: 1.3rem;
+    color: var(--gold);
+}
+
+.review .slide p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--light-color);
+}
+
+.review .review-slider {
+    border-radius: 10px;
+    background: rgb(235, 229, 229);
+    padding: 5%;
+}
+
+/* css review end */
+
+/* css footer start */
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+    gap: 0.5rem;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.footer .box-container .box h3 {
+    padding: px 0;
+    font-size: 20px;
+    color: var(--gold);
+}
+
+.footer .box-container .box a {
+    display: block;
+    padding: 3px 0;
+    font-size: 12px;
+    color: var(--light-color);
+    text-align: left;
+    padding-left: 38%;
+}
+
+.footer .box-container .box a:hover {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+.footer .credit {
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    font-size: 15px;
+    color: var(--black);
+    padding: 12px;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.social-media-icon {
+    size: 12px;
+}
+
+/* css footer end */
+
+/* css detail start */
+.detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.detail h3 {
+    text-align: center;
+    color: var(--gold);
+    font-size: 40px;
+    padding: 10px;
+}
+
+.detail .container {
+    max-width: 95rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    border: 2px solid rgba(0, 0, 0, .2);
+    background: #fff;
+    padding: 20px;
+    margin: 100px auto;
+    margin-bottom: 50px;
+}
+
+.detail .image {
+    /* height: 50vh; */
+    background: url('https://pondokescendol.com/wp-content/uploads/2023/02/gudeg.png');
+    background-size: cover;
+    width: 500px;
+    height: 300px;
+    margin: 20px 34%;
+    /* display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: center;
+            background-position: center;
+            background-repeat: no-repeat; */
+}
+
+.detail .deskripsi {
+    padding-top: 15px;
+    text-align: justify;
+}
+
+.map iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+.detail button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.detail .edit-button,
+.detail .close-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 10px;
+    width: auto;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.detail .edit-button:hover,
+.detail .close-button:hover {
+    background: var(--gold);
+    letter-spacing: .1rem;
+}
+
+/* css detail end */
+
+/* css edit start */
+.edit form {
+    max-width: 90rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    border: 2px solid rgba(0, 0, 0, .2);
+    background: #fff;
+    padding: 20px;
+    padding-bottom: 70px;
+    margin: 50px auto;
+}
+
+.edit form .inputBox .input {
+    width: 100%;
+}
+
+.edit form .inputBox .input label {
+    display: block;
+    /* padding: 10px 0; */
+    font-size: 18px;
+}
+
+.edit form .inputBox .input textarea,
+.edit form .inputBox .input .input {
+    background: #eee;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 15px;
+    color: var(--black);
+    text-transform: none;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.edit form .inputBox .input input:focus,
+.edit form .inputBox .input textarea:focus {
+    border: 2px solid var(--blue);
+}
+
+.edit form .inputBox .input textarea {
+    height: 80px;
+}
+
+form .save-button,
+form .close-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: auto 10px;
+    width: auto;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+form .save-button:hover,
+form .close-button:hover {
+    background: var(--gold);
+    letter-spacing: .1rem;
+}
+
+/* css edit end */

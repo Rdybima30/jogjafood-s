@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url("images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* mengatur warna backgroud form */
+        form {
+            background-color: rgba(0, 0, 0, rgba(0, 0, 0, .7));
+            box-shadow: 0 0 10px #fff(255, 255, 255, .3);
+        }
+
+        /* mengatur border dan padding class form-container */
+        .form-container {
+            border-radius: 10px;
+            padding: 30px;
+            font-size: 18px;
+            color: #fafafa;
+        }
+
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 25px;
+            width: 300px;
+            background-color: rgba(0, 0, 0, .7);
+            box-shadow: 0 0 10px rgba(255, 255, 255, .3);
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #fafafa;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .container label {
+            text-align: left;
+            color: #90caf9;
+        }
+
+        .container form input {
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: none;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .container form button {
+            width: 100%;
+            padding: 5px 0;
+            border: none;
+            background-color: #2979ff;
+            font-size: 15px;
+            color: #fafafa;
+        }
+
+        .buttons {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Login</h1>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Masukkan username anda">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" placeholder="Masukkan password anda">
+            </div>
+            <div class="buttons">
+                <button class="btn-login">Log in</button>
+                &&nbsp;
+                <button class="btn-clear">Clear</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>
