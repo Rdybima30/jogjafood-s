@@ -1,158 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kategori</title>
+    <title>Homepage</title>
 
-    <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/homepage.css">
+
 
 </head>
+
 <body>
-    
-<!-- header section starts      -->
 
-<header>
+    <!-- header section starts      -->
 
-    <a href="#" class="logo"><i class="fas fa-utensils"></i>jogjafood's</a>
+    <header>
 
-    <nav class="navbar">
-        <a href="#home">Home</a>
-        <a class="active" href="#kategori">Kategori</a>
-        <a href="#popular">Popular</a>
-        <a href="#faq&review">FAQ & Review</a>
-        <a href="#about">About</a>
-        <a href="#footer">Contact Us</a>
-        <a href="registrasi.html">Login</a>
-    </nav>
+        <a href="#" class="logo"><i class="fas fa-utensils"></i>jogjafood's</a>
 
-    <div class="icons">
-        <i class="fas fa-bars" id="menu-bars"></i>
-        <i class="fas fa-search" id="search-icon"></i>
-    </div>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a class="active" href="#kategori">Kategori</a>
+            <a href="#popular">Popular</a>
+            <a href="#review">FAQ & Review</a>
+            <a href="registrasi.html">Login</a>
+        </nav>
 
-</header>
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <i class="fas fa-search" id="search-icon"></i>
+        </div>
 
-<!-- search form  -->
+    </header>
 
-<form action="" id="search-form">
-    <input type="search" placeholder="search here..." name="" id="search-box">
-    <label for="search-box" class="fas fa-search"></label>
-    <i class="fas fa-times" id="close"></i>
-</form>
+    <!-- header section ends-->
 
-<!-- home Kategori start -->
-<section class="kategori" id="kategori">
-    <br>
-    <br>
-    <br>
-    <br>
-    <h3 class="sub-heading"> Kategori </h3>
-    <h1 class="heading"> Pilih Kategori </h1>
-    
-    <div class="box-container">
-        <div class="box">
-            <img src="images/gudeg-1.jpg" alt="">
-            <h3>Makanan Berat</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+    <!-- search form  -->
+
+    <form action="" id="search-form">
+        <input type="search" placeholder="search here..." name="" id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+        <i class="fas fa-times" id="close"></i>
+    </form>
+
+    <!-- MAKANAN POPULER -->
+
+    <section class="popular" id="popular" style="margin-top: 80px;">
+
+        <h3 class="sub-heading"> Kategori </h3>
+        <h1 class="heading"> Pilih Kategori Yang Kamu Inginkan </h1>
+
+        <div class="box-container">
+            <div class="box">
+                <a href="">
+                    <h3>Kategori Makanan</h3>
+                </a>
+                <div class="image">
+                    <img src="../static/images/gudeg.jpg" alt="">
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
             </div>
-            <p>rekomendasi makanan berat khas jogja seperti gudeg, rawon, sate klatak,..
-            </p>
+
+            <div class="box">
+                <a href="">
+                    <h3>Kategori Minuman</h3>
+                </a>
+                <div class="image">
+                    <img src="../static/images/angkringan.jpg" alt="">
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <a href="">
+                    <h3>Kategori Jajanan</h3>
+                </a>
+                <div class="image">
+                    <img src="../static/images/soto.jpg" alt="">
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- popular section ends -->
+
+    <!-- about section starts  -->
+
+    <section class="about" id="about">
+
+        <h3 class="sub-heading"> about us </h3>
+        <h1 class="heading"> jogjafood's </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="../static/images/about.png" alt="">
+            </div>
+
+            <div class="content">
+                <h3>rekomendasi makanan khas yogyakarta terbaik</h3>
+                <p>jogjafood's merupakan website rekomendasi makanan dan minuman khas daerah istimewa yogyakarta. mulai
+                    dari makanan berat, mekanan ringan, munuman, dan lain-lain.
+                    jogjafood's menampilkan informasi berbagai jenis makanan berdasarkan kategori-kategori yang tersedia
+                    serta menampilkan menu-menu populer pada saat ini.</p>
+                <p>kunjungi dan pantau terus website kami untuk lebih update makanan-makanan populer daerah yogyakarta.
+                </p>
+                <a href="#" class="btn">learn more</a>
+            </div>
 
         </div>
 
-        <div class="box">
-            <img src="images/bakpi.jpg" alt="">
-            <h3>Jajanan</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+    </section>
+
+    <!-- about section ends -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer" id="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>locations</h3>
+                <a href="#">Yogyakarta</a>
+                <a href="#">Bantul</a>
+                <a href="#">Sleman</a>
+                <a href="#">Depok</a>
+                <a href="#">Kulon Progo</a>
             </div>
-           <p>rekomendasi jajanan khas jogja yang identik dengan rasa manisnya seperti bakpia, yongko, geplak, ...</p>
-          
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#home">home</a>
+                <a href="#kategori">kategori</a>
+                <a href="#popular">popular</a>
+                <a href="#review">review</a>
+                <a href="#faq">faq</a>
+                <a href="#about">about</a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#">+62812-234-832-764</a>
+                <a href="#">+62812-345-678-901</a>
+                <a href="#">contoh@gmail.com</a>
+                <a href="#">inijuga@gmail.com</a>
+                <a href="#">Bantul, Yogyakarta - 1000001</a>
+            </div>
+
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="#">facebook</a>
+                <a href="#">twitter</a>
+                <a href="#">instagram</a>
+                <a href="#">linkedin</a>
+            </div>
+
         </div>
 
-        <div class="box">            
-            <img src="images/esdoger.jpg" alt="">
-            <h3>Minuman</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <p>rekomendasi minuman di daerah yogyakarta yang menyegarkan seperti es doger, es potong, es ..</p>
-        </div>
-    </div>
-    
-</section>
+        <div class="credit"> copyright @2023 Kelompok 3 | Fullstack Web Development | LearningX</div>
 
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<section class="footer" id="footer">
-
-    <div class="box-container">
-
-      <div class="box">
-        <h3>locations</h3>
-        <a href="#">Yogyakarta</a>
-        <a href="#">Bantul</a>
-        <a href="#">Sleman</a>
-        <a href="#">Kulon Progo</a>
-      </div>
-
-      <div class="box">
-        <h3>locations</h3>
-        <a href="#home">home</a>
-        <a href="#kategori">kategori</a>
-        <a href="#popular">popular</a>
-        <a href="#review">review</a>
-        <a href="#faq">faq</a>
-        <a href="#about">logout</a>
-      </div>
-
-      <div class="box">
-        <h3>Contact Info</h3>
-        <a href="#">+62 821-1359-1641</a>
-        <a href="#">+62 881-8679-264</a>
-        <a href="#">+62 822-4176-5668</a>
-        <a href="#">jogjafood's@gmail.com</a>
-      </div>
-
-      <div class="box">
-        <h3>Follow Us</h3>
-        <a href="#">facebook</a>
-        <a href="#">twitter</a>
-        <a href="#">instagram</a>
-        <a href="#">linkedin</a>
-      </div>
-
-    </div>
-
-    <div class="credit"> copyright @2023 Kelompok 3 | Fullstack Web Development | LearningX</div>
-
-  </section>
-<!-- kategori section ends -->
+    </section>
 
 </body>
 
