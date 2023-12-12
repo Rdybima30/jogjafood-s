@@ -1,12 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask App</title>
+    <title>Homepage</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="../static/homepage.css">
+
+
 </head>
+
 <body>
-    <h1>Hello, Flask!</h1>
-    <p>This is a simple Flask web application.</p>
+
+    <!-- header section starts      -->
+
+<header>
+
+    <a href="index.html" class="logo"><i class="fas fa-utensils"></i>jogjafood's</a>
+
+    <nav class="navbar">
+        <a class="active" href="index.html">Home</a>
+        <a href="kategori.html">Kategori</a>
+        <a href="popular.html">Popular</a>
+        <a href="review.html">FAQ & Review</a>
+        <a href="/register">Login</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <i class="fas fa-search" id="search-icon"></i>
+    </div>
+
+</header>
+
+<!-- header section ends-->
+
+<!-- search form  -->
+
+<form action="" id="search-form">
+    <input type="search" placeholder="search here..." name="" id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="swiper-container home-slider">
+
+        <div class="swiper-wrapper wrapper">
+
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <span>makanan khas yogyakarta</span>
+                    <h3>gudeg</h3>
+                    <p>makanan yang berbahan dasar nangka muda atau oleh warga lokal disebut gori.</p>
+                </div>
+                <div class="image">
+                    <img src="../static/images/home-1.png" alt="">
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <span>makanan khas yogyakarta</span>
+                    <h3>wedang ronde</h3>
+                    <p>wedang ronde adalah perpaduan tangyuan dan kuah jahe dengan gula jawa khas nusantara.</p>
+                </div>
+                <div class="image">
+                    <img src="../static/images/home-2.png" alt="">
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <span>makanan khas yogyakarta</span>
+                    <h3>bakpia</h3>
+                    <p>makanan yang terbuat dari tepung trigu yang dipanggang dengan isian kacang hijau tumbuk yang dicampur dengan gula.</p>
+                </div>
+                <div class="image">
+                    <img src="../static/images/home-3.png" alt="">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+
+<!-- MAKANAN POPULER -->
+
+<section class="popular" id="popular">
+
+    <h3 class="sub-heading"> Popular </h3>
+    <h1 class="heading"> Makanan Popular Saat Ini </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/gudeg.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Gudeg</h3>
+                <p>Gudeg adalah makanan yang terbuat dari nangka muda yang dimasak dengan santan. Biasanya terdapat isian seperti telor dan ayam.</p>
+                
+                <span class="price">Rp. 15.000</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/angkringan.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Angkringan</h3>
+                <p>Kota Yogyakarta memang memiliki beragam angkringan legendaris yang menjual makanan khas seperti nasi kucing dan segala jenis sate-satean.</p>
+                
+                <span class="price">Rp. 5.000 - 10.000</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/soto.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Soto</h3>
+                <p> Soto adalah makanan khas Indonesia seperti sop yang terbuat dari kaldu daging. soto disajikan dengan berbagai sayuran dan suwiran daging ayam.</p>
+                <span class="price">Rp. 7.000</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/bakpia.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Bakpia</h3>
+                <p>Bakpia merupakan salah satu makanan khas yang berasal dari jogja yang terbuat dari campuran kacang hijau dengan gula, yang dibungkus dengan tepung, lalu dipanggang.</p>
+                <span class="price">Rp. 30.000</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/yangko.png" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Yangko</h3>
+                <p>Yangko Jogja adalah makan dari adonan dari tepung ketan yang dibalut tepung gula dengan rasa manis dan khas.</p>
+                
+                <span class="price">20.000</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/geplak.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Geplak</h3>
+                <p>Geplak memiliki tekstur kasar dengan bentuk bulatan - bulatan yang terbuat dari buah kelapa yang disajikan dengan rasa manis. </p>
+              
+                <span class="price">15.000</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/wedang-uwuh.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Wedang Uwuh</h3>
+                <p>Wedang uwuh adalah salah satu minuman tradisional yang kerap digunakan dalam pengobatan tradisional.</p>
+                
+                <span class="price">8.000</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/wedang-ronde.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Wedang Ronde</h3>
+                <p>Wedang ronde, salah satu minuman yang melegenda yang terdiri dari kuah jahe yang diberi isian ronde.</p>
+                
+                <span class="price">7.000</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../static/images/kopi-jos.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Kopi Jos </h3>
+                <p>Kopi jos atau kopi joss adalah kopi khas Yogyakarta yang disajikan bersama arang panas. </p>
+              
+                <span class="price">10.000</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- popular section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <h3 class="sub-heading"> about us </h3>
+    <h1 class="heading"> jogjafood's </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="../static/images/about.png" alt="">
+        </div>
+
+        <div class="content">
+            <h3>rekomendasi makanan khas yogyakarta terbaik</h3>
+            <p>jogjafood's merupakan website rekomendasi makanan dan minuman khas daerah istimewa yogyakarta. mulai dari makanan berat, mekanan ringan, munuman, dan lain-lain.
+                jogjafood's menampilkan informasi berbagai jenis makanan berdasarkan kategori-kategori yang tersedia serta menampilkan menu-menu populer pada saat ini.</p>
+            <p>kunjungi dan pantau terus website kami untuk lebih update makanan-makanan populer daerah yogyakarta.</p>
+            <a href="#" class="btn">learn more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer" id="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>locations</h3>
+            <a href="#">Yogyakarta</a>
+            <a href="#">Bantul</a>
+            <a href="#">Sleman</a>
+            <a href="#">Depok</a>
+            <a href="#">Kulon Progo</a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#home">home</a>
+            <a href="#kategori">kategori</a>
+            <a href="#popular">popular</a>
+            <a href="#review">review</a>
+            <a href="#faq">faq</a>
+            <a href="#about">about</a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#">+62812-234-832-764</a>
+            <a href="#">+62812-345-678-901</a>
+            <a href="#">contoh@gmail.com</a>
+            <a href="#">inijuga@gmail.com</a>
+            <a href="#">Bantul, Yogyakarta - 1000001</a>
+        </div>
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#">facebook</a>
+            <a href="#">twitter</a>
+            <a href="#">instagram</a>
+            <a href="#">linkedin</a>
+        </div>
+
+    </div>
+
+    <div class="credit"> copyright @2023 Kelompok 3 | Fullstack Web Development | LearningX</div>
+
+</section>
+
 </body>
+
 </html>
