@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
 :root{
-    --green:	#CD853F;
+    --gold:	#CD853F;
     --black:#192a56;
     --light-color:#666;
     --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
@@ -34,7 +34,7 @@ section:nth-child(even){
 
 .sub-heading{
     text-align: center;
-    color:var(--green);
+    color:var(--gold);
     font-size: 2rem;
     padding-top: 1rem;
 }
@@ -59,7 +59,7 @@ section:nth-child(even){
 }
 
 .btn:hover{
-    background: var(--green);
+    background: var(--gold);
     letter-spacing: .1rem;
 }
 
@@ -82,7 +82,7 @@ header .logo{
 }
 
 header .logo i{
-    color:var(--green);
+    color:var(--gold);
 }
 
 header .navbar a{
@@ -95,7 +95,7 @@ header .navbar a{
 header .navbar a.active,
 header .navbar a:hover{
     color:#fff;
-    background: var(--green);
+    background: var(--gold);
 }
 
 header .icons i,
@@ -115,7 +115,7 @@ header .icons a{
 header .icons i:hover,
 header .icons a:hover{
     color:#fff;
-    background: var(--green);
+    background: var(--gold);
     transform: rotate(360deg);
 }
 
@@ -164,7 +164,7 @@ header .icons #menu-bars{
 }
 
 #search-form label:hover{
-    color:var(--green);
+    color:var(--gold);
 }
 
 #search-form #close{
@@ -196,7 +196,7 @@ header .icons #menu-bars{
 }
 
 .home .home-slider .slide .content span{
-    color:var(--green);
+    color:var(--gold);
     font-size: 2.5rem;
 }
 
@@ -213,7 +213,7 @@ header .icons #menu-bars{
 }
 
 .swiper-pagination-bullet-active{
-    background:var(--green);
+    background:var(--gold);
 }
 
 .about .row{
@@ -287,7 +287,7 @@ header .icons #menu-bars{
 
 .popular .box-container .box .content .stars i{
    font-size: 1.7rem;
-   color:var(--green);
+   color:var(--gold);
 }
 
 .popular .box-container .box .content h3{
@@ -303,7 +303,7 @@ header .icons #menu-bars{
 }
 
 .popular .box-container .box .content .price{
-    color:var(--green);
+    color:var(--gold);
     margin-left: 1rem;
     font-size: 2.5rem;
 }
@@ -317,7 +317,7 @@ header .icons #menu-bars{
 .footer .box-container .box h3{
     padding:.5rem 0;
     font-size: 2.5rem;
-    color:var(--black);
+    color:var(--gold);
 }
 
 .footer .box-container .box a{
@@ -328,7 +328,7 @@ header .icons #menu-bars{
 }
 
 .footer .box-container .box a:hover{
-    color:var(--green);
+    color:var(--gold);
     text-decoration: underline;
 }
 
@@ -343,7 +343,7 @@ header .icons #menu-bars{
 }
 
 .footer .credit span{
-    color:var(--green);
+    color:var(--gold);
 }
 
 .loader-container{
