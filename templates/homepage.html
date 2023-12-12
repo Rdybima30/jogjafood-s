@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .box {
+            width: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .box img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .box h3 {
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .rating {
+            color: #f39c12;
+        }
+
+        .description {
+            color: #777;
+            margin-top: 10px;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <a href="#" class="logo"><i class="fas fa-utensils"></i>jogjafood's</a>
+
+        <nav class="navbar">
+            <a class="active" href="#home">Home</a>
+            <a href="#kategori">Kategori</a>
+            <a href="#popular">Popular</a>
+            <a href="#faq & review">FAQ & Review</a>
+            <a href="#about">About</a>
+            <a href="#footer">Contact Us</a>
+            <a href="registrasi.html">Login</a>
+        </nav>
+
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <i class="fas fa-search" id="search-icon"></i>
+        </div>
+
+    </header>
+
+    <form action="" id="search-form">
+        <input type="search" placeholder="search here..." name="" id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+        <i class="fas fa-times" id="close"></i>
+    </form>
+
+    <section class="home" id="home">
+
+        <div class="swiper-container home-slider">
+
+            <div class="swiper-wrapper wrapper">
+
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>makanan khas yogyakarta</span>
+                        <h3>gudeg</h3>
+                        <p>makanan yang berbahan dasar nangka muda atau oleh warga lokal disebut gori.</p>
+                    </div>
+                    <div class="image">
+                        <img src="images/home-1.png" alt="">
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="box">
+                        <img src="images/soto.jpg" alt="Makanan 1">
+                        <h3>Soto</h3>
+                        <div class="rating">&#9733; &#9733; &#9733; &#9733; &#9734;</div>
+                        <p class="description">
+                            Soto adalah salah satu hidangan berkuah yang berasal dari Indonesia. Soto memiliki banyak
+                            varian, dengan masing-masing varian memiliki ciri khasnya sendiri.</p>
+                        <p class="price">Harga: Rp 12.000</p>
+                    </div>
+
+                    <div class="box">
+                        <img src="images/esdoger.jpg" alt="Makanan 2">
+                        <h3>S'Doger</h3>
+                        <div class="rating">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                        <p class="description">
+                            Es doger adalah salah satu hidangan es tradisional yang berasal dari Bandung, Jawa Barat. Es
+                            doger terbuat dari santan, gula merah, susu kental manis, tape singkong, dan pacar cina. Es
+                            doger biasanya disajikan dengan tambahan buah-buahan, seperti nangka, alpukat, dan kelapa
+                            muda.</p>
+                        <p class="price">Harga: Rp 15.000</p>
+                    </div>
+
+                    <div class="box">
+                        <img src="images/angkringan.jpg" alt="Makanan 3">
+                        <h3>angkringan</h3>
+                        <div class="rating">&#9733; &#9733; &#9733; &#9734; &#9734;</div>
+                        <p class="description">
+                            Angkringan adalah salah satu jenis warung makan yang populer di Indonesia, terutama di Jawa
+                            Tengah dan Daerah Istimewa Yogyakarta. Angkringan biasanya buka pada malam hari, dan menjual
+                            berbagai makanan dan minuman, seperti nasi kucing, sate, gorengan, dan minuman kopi atau
+                            teh.</p>
+                        <p class="price">Harga: Rp 30.000</p>
+                    </div>
+
+                    <div class="box">
+                        <img src="images/bakpia.jpg" alt="Makanan 4">
+                        <h3>Bakpia</h3>
+                        <div class="rating">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                        <p class="description">
+                            Bakpia adalah salah satu makanan khas Yogyakarta yang paling populer. Bakpia terbuat dari
+                            kulit pastry yang diisi dengan kacang hijau. Bakpia biasanya dikemas dalam kotak bewarna
+                            hijau.</p>
+                        <p class="price">Harga: Rp 25.000</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
