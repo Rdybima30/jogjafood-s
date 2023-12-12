@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\Learning X\KELOMPOK 3\Kelompok 3-Jogjafood's\venv"
+VIRTUAL_ENV="D:\Kuliah\Materi\MBKM\LearningX\Fullstack\Project Akhir\jogjafood-s\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
