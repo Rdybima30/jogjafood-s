@@ -9,11 +9,22 @@ import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 
-app = Flask(__name__)
+app=Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['UPLOAD_FOLDER'] = './static/profile_pics'
+
+SECRET_KEY = "SPARTA"
+
+MONGODB_CONNECTION_STRING = "mongodb+srv://rendybima:rendybima(301002)@cluster0.6zfd4hh.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(MONGODB_CONNECTION_STRING)
+db = client.jogjafood
+
+TOKEN_KEY = "mytoken"
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def homepage():
+    return render_template('homepage.html')
+
 
 @app.route('/addmenu')
 def add_menu():
