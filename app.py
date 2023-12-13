@@ -3,7 +3,6 @@ from pymongo import MongoClient
 import jwt
 from datetime import datetime, timedelta
 import hashlib
-import requests
 from werkzeug.utils import secure_filename
 import os
 from os.path import join, dirname
