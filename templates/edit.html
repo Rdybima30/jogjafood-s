@@ -4,18 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Menu</title>
-
+    <title>Add Menu Detail</title>
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="../static/style.css">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
     <!-- Bootstrap requirement jQuery pada posisi pertama, kemudian Popper.js, danyang terakhit Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -24,9 +18,44 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <!-- custom css file link  -->
+    <!-- <link rel="stylesheet" href="../static/add_menu_detail.css"> -->
+    <link rel="stylesheet" href="../static/add_menu_admin_detail.css">
+    <style>
+
+    </style>
+
 </head>
 
 <body>
+    <header>
+
+        <a href="#" class="logo"><i class="fas fa-utensils"></i>jogjafood's</a>
+
+        <nav class="navbar">
+            <a class="active" href="#home">Home</a>
+            <a href="#add menu">Add Menu</a>
+            <a href="#logout">Logout</a>
+        </nav>
+
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <i class="fas fa-search" id="search-icon"></i>
+        </div>
+
+    </header>
+
+    <!-- home section starts  -->
+    <!-- search form  -->
+
+    <form action="" id="search-form">
+        <input type="search" placeholder="search here..." name="" id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+        <i class="fas fa-times" id="close"></i>
+    </form>
+
+    <!-- home section starts  -->
+
     <!-- edit section start -->
     <section class="edit" id="edit">
         <div class="container">
@@ -41,7 +70,8 @@
                         <div class="control is-expanded">
                             <div class="file has-name">
                                 <label class="file-label" style="width: 100%">
-                                    <input id="input-pic" class="file-input" type="file" name="resume" style="width: 100%; border: 1px solid grey; border-radius: 5px;">
+                                    <input id="input-pic" class="file-input" type="file" name="resume"
+                                        style="width: 100%; border: 1px solid grey; border-radius: 5px;">
                                     <span id="file-name" class="file-name" style="width: 100%; max-width: 100%"></span>
                                 </label>
                             </div>
@@ -58,16 +88,15 @@
                     </div>
                     <div class="input">
                         <label for="floatingInput">Lokasi</label>
-                        <input type="text" class="form-control input" id="judul" placeholder="Masukkan lokas menu">
+                        <input type="text" class="form-control input" id="judul" placeholder="Masukkan lokasi menu">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-secondary save-button" style="float: right;">Cancel</button>
-                <button type="close" class="btn btn-secondary close-button" style="float: right;">Save</button>
+                <button type="close" class="btn btn-secondary close-button" style="float: right;">Cancel</button>
+                <button type="submit" class="btn btn-secondary save-button" style="float: right;">Edit</button>
             </form>
         </div>
     </section>
     <!-- edit section end -->
-
 </body>
 
 </html>
