@@ -25,6 +25,27 @@ TOKEN_KEY = "mytoken"
 def homepage():
     return render_template('homepage.html')
 
+@app.route('/signup')
+def signup():
+    return render_template('register.html')
+
+
+@app.route('/sign_up/save', methods=['POST'])
+def sign_up():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    password_hash = hashlib.sha256(password. encode('utf-8')).hexdigest()
+    doc = {
+        "name": name,
+        "email": email,
+        "category": 'visitor',
+        "password": password_hash
+    }
+    db.users.insert_one(doc)
+    return jsonify({'result': 'success'})
+
+
 
 
 @app.route('/addmenu')
