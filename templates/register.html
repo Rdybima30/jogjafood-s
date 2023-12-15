@@ -2,99 +2,108 @@
 <html lang="en">
 
 <head>
-    <!-- meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Register</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <title>Registrasi</title>
-
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-    <!-- costum css -->
-    <link rel="stylesheet" href="../static/style.css">
-    <style>
-        /* mengatur backgound */
-        body {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../static/images/registrasi.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-    </style>
-    <script>
-        function signup() {
-            let name = $("#name").val();
-            let email = $("#email").val();
-            let password = $("#password").val();
-
-            if (name == '' || email == '' || password == '') {
-                alert('Oops, data tidak lengkap ');
-            } else {
-                $.ajax({
-                    type: "POST",
-                    url: "/signup",
-                    data: {
-                        name: name,
-                        email: email,
-                        password: password,
-                    },
-                    success: function (response) {
-                        if (response["result"] === "success") {
-                            alert("User registration complete!");
-                            window.location.href = "/login";
-                        } else {
-                            alert(response["msg"]);
-                        }
-                    },
-                });
+        <!-- Bulma CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+        <!-- costum css -->
+        <link rel="stylesheet" href="../static/style.css">
+    
+        <style>
+            /* mengatur backgound */
+            body {
+                height: 100vh;
+                background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../static/images/registrasi.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
             }
+        </style>
+
+    <script>
+        function register() {
+            $.ajax({
+                type: "POST",
+                url: "/api/register",
+                data: {
+                    id_give: $("#userid").val(),
+                    pw_give: $("#userpw").val(),
+                    email_give: $("#useremail").val(),
+                },
+                success: function (response) {
+                    if (response["result"] === "success") {
+                        alert("User registration complete!");
+                        window.location.href = "/login";
+                    } else {
+                        alert(response["msg"]);
+                    }
+                },
+            });
         }
 
+        function ClearInputs() {
+            $("#userid").val("");
+            $("#userpw").val("");
+            $("#useremail").val("");
+        }
     </script>
 </head>
 
 <body>
-    <section class="container-fluid">
+    <!-- <section class="container-fluid" style="background: transparent;"> -->
         <!-- justify-content-center untuk mengatur posisi form agar berada di tengah-tengah -->
-        <section class="row justify-content-center">
+        <section class="row justify-content-center" style="background: transparent;">
             <section class="col-12 col-sm-6 col-md-4">
-                <form class="form-container">
-                    <h1 class="text-center font-weight-bold"> Sign-Up </h1>
+                <!-- <form class="form-container"> -->
+                <div class="container">
+                    <h1 class="text-center font-weight-bold"> Login </h1>
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Masukkan Nama">
+                        <label class="label" for="userid">Nama</label>
+                        <div class="control">
+                            <input type="text" class="input" id="userid" aria-describedby="emailHelp"
+                                placeholder="Masukkan  nama" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label" for="useremail">Email</label>
+                        <div class="control">
+                            <input type="text" class="input" id="useremail" aria-describedby="emailHelp"
+                                placeholder="Masukkan email" />
+                        </div>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Masukkan Email">
+                        <label class="label" for="userpw">Password</label>
+                        <div class="field">
+                            <div class="control">
+                                <input type="password" class="input" id="userpw" placeholder="Masukkan password" />
+                            </div>
+                        </div>
                     </div>
 
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                    </div>
-
-                    <button type="submit" onclick="signup()" class="btn btn-secondary">Register</button>
-                    <button type="clear" class="btn btn-secondary" style="float: right;">Clear</button>
+                    <button onclick="register()" class="btn btn-secondary">Register</button>
+                    <button onclick="ClearInputs()" class="btn btn-secondary" style="float: right;">Clear</button>
                     <div class="form-footer mt-2">
-                        <p> Sudah punya account? <a href="/login">Login</a></p>
+                        <p> Sudah punya akun? <a href="/login">Sign In</a></p>
                     </div>
-                </form>
+                    <!-- </form> -->
+                </div>
             </section>
         </section>
-    </section>
-
-
+    <!-- </section> -->
 </body>
 
 </html>

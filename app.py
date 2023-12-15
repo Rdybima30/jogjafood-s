@@ -17,134 +17,119 @@ SECRET_KEY = "SPARTA"
 MONGODB_CONNECTION_STRING = "mongodb+srv://nadaanis526:nada2626anis@cluster0.zp4go5w.mongodb.net/"
 client = MongoClient(MONGODB_CONNECTION_STRING)
 db = client.jogjafood
-users_collection = db['users']
 
 SECRET_KEY = 'secret1141'
 TOKEN_KEY = 'mytoken'
 
-@app.route('/')
+@app.route("/")
+def index():
+    return render_template("homepage.html")
 
-def main():
-    return render_template('homepage.html')
-    return render_template('index.html')
-
-@app.route('/home', methods=['GET'])
+@app.route("/home")
 def home():
-    token_receive = request.cookies.get(TOKEN_KEY)
+    token_receive = request.cookies.get("mytoken")
+    try:
+        payload = jwt.decode(token_receive,
+                 SECRET_KEY, algorithms=["HS256"])
+        user_info = db.user.find_one({"id": payload["id"]})
+        return render_template("index.html",
+            nickname=user_info["nick"])
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("index",
+            msg="Your login token has expired"))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("index",
+            msg="There was an issue logging you in"))
+    
+@app.route("/login")
+def login():
+    msg = request.args.get("msg")
+    return render_template("login.html", msg=msg)
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+@app.route("/api/register", methods=["POST"])
+def api_register():
+    id_receive = request.form["id_give"]
+    pw_receive = request.form["pw_give"]
+    email_give = request.form["email_give"]
+
+    existing_user = db.user.find_one({"id": id_receive})
+    if existing_user:
+        return jsonify({"result": "fail", "msg": f"An acount with id '{id_receive}' is already. Please Login!"})
+
+    pw_hash = hashlib.sha256(pw_receive.encode("utf-8")).hexdigest()
+
+    db.user.insert_one({
+        "id": id_receive,
+        "pw": pw_hash,
+        "email": email_give
+    })
+
+    return jsonify({"result": "success"})
+
+@app.route("/api/login", methods=["POST"])
+def api_login():
+    id_receive = request.form["id_give"]
+    pw_receive = request.form["pw_give"]
+    pw_hash = hashlib.sha256(pw_receive.encode("utf-8")).hexdigest()
+    result = db.user.find_one({"id": id_receive, "pw": pw_hash})
+    if result is not None:
+        payload = {
+            "id": id_receive,
+            "exp": datetime.utcnow() + timedelta(seconds=5),
+        }
+        token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+        return jsonify({"result": "success", "token": token})
+    else:
+        return jsonify({"result": "fail", "msg": "Either your email or your password is incorrect"})
+
+    
+@app.route("/api/nick", methods=["GET"])
+def api_valid():
+    token_receive = request.cookies.get("mytoken")
+
     try:
         payload = jwt.decode(
             token_receive,
             SECRET_KEY,
-            algorithms=['HS256']
+            algorithms=["HS256"]
         )
-        user_info = db.users.find_one({"email": payload["id"]})
-        is_admin = user_info.get("category") == "admin"
-        logged_in = True
-        print(user_info)
-        return render_template('homepage.html', user_info=user_info, logged_in=logged_in, is_admin=is_admin)
+        print(payload)
+        userinfo = db.user.find_one({
+            "id": payload["id"]},
+            {"_id": 0}
+        )
+        return jsonify({
+            "result": "success",
+            "nickname": userinfo["nick"]}
+            )
     except jwt.ExpiredSignatureError:
-        msg = 'Your token has expired'
+        msg = "Your token has expired"
+        return jsonify({
+            "result": "fail",
+            "msg": msg}
+            )
     except jwt.exceptions.DecodeError:
-        msg = 'There was a problem logging you in'
-    return render_template('homepage.html', msg=msg)
-
-@app.route('/register')
-def register():
-    return render_template('register.html')
-
-@app.route('/signup',methods=['POST'])
-def api_register():
-    name=request.form.get('name')
-    email=request.form.get('email')
-    password=request.form.get('password')
-
-    pw_hash=hashlib.sha256(password.encode('utf-8')).hexdigest() #mengenskripsi pw
-
-    db.user.insert_one({
-        'name':name,
-        'email':email,
-        "category": 'visitor',
-        'password':pw_hash
-    })
-    return  jsonify({'result':'success'})
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-@app.route("/signin", methods=["POST"])
-def signin():
-    email = request.form["email"]
-    password = request.form["password"]
-    print(email)
-    pw_hash = hashlib.sha256(password.encode("utf-8")).hexdigest()
-    print(pw_hash)
-    result = db.users.find_one(
-        {
-            "email": email,
-            "password": pw_hash,
-        }
-    )
-    if result:
-        payload = {
-            "id": email,
-            "exp": datetime.utcnow() + timedelta(seconds=60 * 60 * 24),
-        }
-        token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
-
-        return jsonify(
-            {
-                "result": "success",
-                "token": token,
-            }
+        msg = "There was an error while logging you in"
+        return jsonify({
+            "result": "fail",
+            "msg": msg}
         )
-    else:
-        return jsonify(
-            {
-                "result": "fail",
-                "msg": "We could not find a user with that id/password combination",
-            }
-        )
-    
 
-
-@app.route('/addmenu')
-def add_menu():
-    return render_template('addmenu.html')
-
-
-@app.route('/detail')
-def detail():
-    return render_template('detail.html')
-
-
-@app.route('/edit')
-def edit():
-    return render_template('edit.html')
-
-
-@app.route('/formaddmenu')
-def form_add_menu():
-    return render_template('form_add_menu.html')
-
-
-@app.route('/homepageadmin')
-def homepage_admin():
-    return render_template('homepage_admin.html')
-
-
-@app.route('/kategori')
+@app.route("/kategori")
 def kategori():
-    return render_template('kategori.html')
+    return render_template("kategori.html")
 
-@app.route('/popular')
+@app.route("/popular")
 def popular():
-    return render_template('popular.html')
+    return render_template("popular.html")
 
-@app.route('/review')
+@app.route("/review")
 def review():
-    return render_template('review.html')
-
-
+    return render_template("review.html")
+    
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
@@ -15,6 +18,7 @@
 
     <!-- costum css -->
     <link rel="stylesheet" href="../static/style.css">
+
     <style>
         /* mengatur backgound */
         body {
@@ -25,61 +29,70 @@
             background-repeat: no-repeat;
         }
     </style>
-    <script>
-        function signin() {
-            let email = $("#email").val();
-            let password = $("#password").val();
 
+    <script>
+        function login() {
             $.ajax({
                 type: "POST",
-                url: "/signin",
-                data: {
-                    email: email,
-                    password: password,
-                },
+                url: "/api/login",
+                data: { id_give: $('#userid').val(), pw_give: $('#userpw').val() },
                 success: function (response) {
-                    if (response["result"] === "success") {
+                    if (response['result'] === 'success') {
                         $.cookie('mytoken', response['token']);
+
                         alert('Login complete!')
-                        window.location.href = '/home';
+                        window.location.href = '/'
                     } else {
-                        alert(response["msg"]);
+                        alert(response['msg'])
                     }
-                },
-            });
+                }
+            })
+        }
+
+        function ClearInputs() {
+            $("#userid").val("");
+            $("#userpw").val("");
         }
     </script>
-
 </head>
 
 <body>
-    <section class="container-fluid">
-        <!-- justify-content-center untuk mengatur posisi form agar berada di tengah-tengah -->
-        <section class="row justify-content-center">
-            <section class="col-12 col-sm-6 col-md-4">
-                <form class="form-container">
-                    <h1 class="text-center font-weight-bold"> Login </h1>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Masukkan Email">
+    <!-- <section class="container-fluid" style="background: transparent;"> -->
+    <!-- justify-content-center untuk mengatur posisi form agar berada di tengah-tengah -->
+    <section class="row justify-content-center" style="background: transparent;">
+        <section class="col-12 col-sm-6 col-md-4">
+            <!-- <form class="form-container"> -->
+            <div class="container">
+                <h1 class="text-center font-weight-bold"> Login </h1>
+                <div class="form-group">
+                    <label class="label" for="userid">Nama</label>
+                    <div class="control">
+                        <input type="text" class="input" id="userid" aria-describedby="emailHelp"
+                            placeholder="Masukkan  nama" />
                     </div>
+                </div>
 
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                <div class="form-group">
+                    <label class="label" for="userpw">Password</label>
+                    <div class="field">
+                        <div class="control">
+                            <input type="password" class="input" id="userpw" placeholder="Masukkan password" />
+                        </div>
                     </div>
+                </div>
 
 
-                    <button type="submit" onclick="signin()" class="btn btn-secondary">Login</button>
-                    <button type="clear" class="btn btn-secondary" style="float: right;">Clear</button>
-                    <div class="form-footer mt-2">
-                        <p> Belum punya akun? <a href="/register">Sign Up</a></p>
-                    </div>
-                </form>
-            </section>
+                <button onclick="login()" class="btn btn-secondary">Login</button>
+                <button onclick="ClearInputs()" class="btn btn-secondary" style="float: right;">Clear</button>
+                <div class="form-footer mt-2">
+                    <p> Belum punya akun? <a href="/register">Sign Up</a></p>
+                </div>
+                <!-- </form> -->
+            </div>
         </section>
     </section>
+    <!-- </section> -->
 </body>
 
 </html>

@@ -223,19 +223,28 @@ header .icons #menu-bars {
 
 /* css registrasi start */
 /* mengatur warna backgroud form */
-form {
+/* form {
     background-color: rgba(0, 0, 0, .7);
     box-shadow: --box-shadow;
-}
+} */
 
 /* mengatur border dan padding class form-container */
-.form-container {
+.container {
+    background-color: rgba(0, 0, 0, .7);
+    box-shadow: --box-shadw;
     border-radius: 10px;
     padding: 30px;
     font-size: 18px;
     color: #fafafa;
     margin-top: 50px;
+}
+.form-group label{
+    font-size: 18px;
+    color: white;
+}
 
+.form-group input {
+    font-size: 12px;
 }
 
 .btn:hover {
