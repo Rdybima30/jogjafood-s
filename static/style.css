@@ -13,58 +13,61 @@
     outline: 0;
     font-family: 'Nunito', sans-serif;
 }
+
 /* navbar section start */
-html{
+html {
     font-size: 62.5%;
     overflow-x: hidden;
     scroll-padding-top: 5.5rem;
     scroll-behavior: smooth;
 }
 
-section{
-    padding:2rem 9%;
+section {
+    padding: 2rem 9%;
 }
 
-section:nth-child(even){
-    background:#eee;
+section:nth-child(even) {
+    background: #eee;
 }
 
-.sub-heading{
+.sub-heading {
     text-align: center;
-    color:var(--gold);
+    color: var(--gold);
     font-size: 2rem;
     padding-top: 1rem;
 }
 
-.heading{
+.heading {
     text-align: center;
-    color:var(--black);
+    color: var(--black);
     font-size: 3rem;
     padding-bottom: 2rem;
     text-transform: uppercase;
 }
 
-.btn{
+.btn {
     margin-top: 1rem;
     display: inline-block;
     font-size: 1.7rem;
-    color:#fff;
+    color: #fff;
     background: var(--black);
     border-radius: .5rem;
     cursor: pointer;
-    padding:.8rem 3rem;
+    padding: .8rem 3rem;
 }
 
-.btn:hover{
+.btn:hover {
     background: var(--gold);
     letter-spacing: .1rem;
 }
 
-header{
+header {
     position: fixed;
-    top:0; left: 0; right:0;
+    top: 0;
+    left: 0;
+    right: 0;
     background: #fff;
-    padding:1rem 7%;
+    padding: 1rem 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,164 +75,176 @@ header{
     box-shadow: var(--box-shadow);
 }
 
-header .logo{
-    color:var(--black);
+header .logo {
+    color: var(--black);
     font-size: 2.5rem;
     font-weight: bolder;
 }
 
-header .logo i{
-    color:var(--gold);
+header .logo i {
+    color: var(--gold);
 }
 
-header .navbar a{
+header .navbar a {
     font-size: 1.7rem;
     border-radius: .5rem;
-    padding:.5rem 1.5rem;
-    color:var(--light-color);
+    padding: .5rem 1.5rem;
+    color: var(--light-color);
 }
 
 header .navbar a.active,
-header .navbar a:hover{
-    color:#fff;
+header .navbar a:hover {
+    color: #fff;
     background: var(--gold);
 }
 
 header .icons i,
-header .icons a{
+header .icons a {
     cursor: pointer;
     margin-left: .5rem;
-    height:4.5rem;
+    height: 4.5rem;
     line-height: 4.5rem;
-    width:4.5rem;
+    width: 4.5rem;
     text-align: center;
     font-size: 1.7rem;
-    color:var(--black);
+    color: var(--black);
     border-radius: 50%;
     background: #eee;
 }
 
 header .icons i:hover,
-header .icons a:hover{
-    color:#fff;
+header .icons a:hover {
+    color: #fff;
     background: var(--gold);
     transform: rotate(360deg);
 }
 
-header .icons #menu-bars{
+header .icons #menu-bars {
     display: none;
 }
 
-#search-form{
+#search-form {
     position: fixed;
-    top:-110%; left:0; 
-    height:100%; width:100%;
+    top: -110%;
+    left: 0;
+    height: 100%;
+    width: 100%;
     z-index: 1004;
-    background:rgba(0,0,0,.8);
+    background: rgba(0, 0, 0, .8);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:0 1rem;
+    padding: 0 1rem;
 }
 
-#search-form.active{
-    top:0;
+#search-form.active {
+    top: 0;
 }
 
-#search-form #search-box{
-    width:50rem;
+#search-form #search-box {
+    width: 50rem;
     border-bottom: .1rem solid #fff;
-    padding:1rem 0;
-    color:#fff;
+    padding: 1rem 0;
+    color: #fff;
     font-size: 3rem;
     text-transform: none;
-    background:none;
+    background: none;
 }
 
-#search-form #search-box::placeholder{
-    color:#eee;
+#search-form #search-box::placeholder {
+    color: #eee;
 }
 
-#search-form #search-box::-webkit-search-cancel-button{
+#search-form #search-box::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
 
-#search-form label{
-    color:#fff;
-    cursor:pointer;
+#search-form label {
+    color: #fff;
+    cursor: pointer;
     font-size: 3rem;
 }
 
-#search-form label:hover{
-    color:var(--gold);
+#search-form label:hover {
+    color: var(--gold);
 }
 
-#search-form #close{
+#search-form #close {
     position: absolute;
-    color:#fff;
+    color: #fff;
     cursor: pointer;
-    top: 2rem; right:3rem;
+    top: 2rem;
+    right: 3rem;
     font-size: 5rem;
 }
 
-.home .home-slider .slide{
+.home .home-slider .slide {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap:2rem; 
+    gap: 2rem;
     padding-top: 9rem;
 }
 
-.home .home-slider .slide .content{
-    flex:1 1 45rem;
+.home .home-slider .slide .content {
+    flex: 1 1 45rem;
 }
 
-.home .home-slider .slide .image{
-    flex:1 1 45rem;
+.home .home-slider .slide .image {
+    flex: 1 1 45rem;
 }
 
-.home .home-slider .slide .image img{
+.home .home-slider .slide .image img {
     width: 100%;
 }
 
-.home .home-slider .slide .content span{
-    color:var(--gold);
+.home .home-slider .slide .content span {
+    color: var(--gold);
     font-size: 2.5rem;
 }
 
-.home .home-slider .slide .content h3{
-    color:var(--black);
+.home .home-slider .slide .content h3 {
+    color: var(--black);
     font-size: 7rem;
 }
 
-.home .home-slider .slide .content p{
-    color:var(--light-color);
+.home .home-slider .slide .content p {
+    color: var(--light-color);
     font-size: 2.2rem;
-    padding:.5rem 0;
+    padding: .5rem 0;
     line-height: 1.5;
 }
 
-.swiper-pagination-bullet-active{
-    background:var(--gold);
+.swiper-pagination-bullet-active {
+    background: var(--gold);
 }
 
 /* navbar section end */
 
 /* css registrasi start */
 /* mengatur warna backgroud form */
-form {
+/* form {
     background-color: rgba(0, 0, 0, .7);
     box-shadow: --box-shadow;
-}
+} */
 
 /* mengatur border dan padding class form-container */
-.form-container {
+.container {
+    background-color: rgba(0, 0, 0, .7);
+    box-shadow: --box-shadw;
     border-radius: 10px;
     padding: 30px;
     font-size: 18px;
     color: #fafafa;
     margin-top: 50px;
+}
+.form-group label{
+    font-size: 18px;
+    color: white;
+}
 
+.form-group input {
+    font-size: 12px;
 }
 
 .btn:hover {
@@ -333,6 +348,7 @@ form {
     border-radius: 5px;
     position: relative;
 }
+
 .review .sub-heading {
     text-align: center;
     color: var(--gold);
@@ -582,4 +598,5 @@ form .close-button:hover {
     background: var(--gold);
     letter-spacing: .1rem;
 }
+
 /* css edit end */

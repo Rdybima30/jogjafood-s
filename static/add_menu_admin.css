@@ -54,8 +54,7 @@ section:nth-child(even) {
     margin-top: 1rem;
     display: inline-block;
     font-size: 1.7rem;
-    color: #fff;
-    background: var(--gold);
+    /* color: #fff; */
     border-radius: .5rem;
     cursor: pointer;
     padding: .8rem 3rem;
@@ -243,9 +242,12 @@ header .icons #menu-bars {
     justify-content: center;
     align-items: center; */
     display: flex;
-    flex-direction: column; /* Menyusun elemen secara vertikal */
-    align-items: center; /* Pusatkan secara horizontal */
-    justify-content: center; /* Pusatkan secara vertikal */
+    flex-direction: column;
+    /* Menyusun elemen secara vertikal */
+    align-items: center;
+    /* Pusatkan secara horizontal */
+    justify-content: center;
+    /* Pusatkan secara vertikal */
     /* width: 100vh; */
 }
 
