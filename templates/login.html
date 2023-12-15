@@ -39,8 +39,9 @@
                 },
                 success: function (response) {
                     if (response["result"] === "success") {
-                        $.cookie("mytoken", response["token"], { path: "/home" });
-                        window.location.replace("/home");
+                        $.cookie('mytoken', response['token']);
+                        alert('Login complete!')
+                        window.location.href = '/home';
                     } else {
                         alert(response["msg"]);
                     }
