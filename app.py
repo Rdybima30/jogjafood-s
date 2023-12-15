@@ -14,14 +14,18 @@ app.config['UPLOAD_FOLDER'] = './static/profile_pics'
 
 SECRET_KEY = "SPARTA"
 
-MONGODB_CONNECTION_STRING = "mongodb+srv://nadaanis526:nada2626anis@cluster0.zp4go5w.mongodb.net/"
+MONGODB_CONNECTION_STRING = "mongodb+srv://rendybima:rendybima(301002)@cluster0.6zfd4hh.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(MONGODB_CONNECTION_STRING)
 db = client.jogjafood
+users_collection = db['users']
 
 SECRET_KEY = 'secret1141'
 TOKEN_KEY = 'mytoken'
 
 @app.route('/')
+def home():
+    return render_template('homepage.html')
+
 def main():
     return render_template('index.html')
 
@@ -143,4 +147,4 @@ def review():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
