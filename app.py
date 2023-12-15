@@ -17,35 +17,14 @@ SECRET_KEY = "SPARTA"
 MONGODB_CONNECTION_STRING = "mongodb+srv://rendybima:rendybima(301002)@cluster0.6zfd4hh.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(MONGODB_CONNECTION_STRING)
 db = client.jogjafood
+users_collection = db['users']
 
 TOKEN_KEY = "mytoken"
 
 
 @app.route('/')
-def homepage():
+def home():
     return render_template('homepage.html')
-
-@app.route('/signup')
-def signup():
-    return render_template('register.html')
-
-
-@app.route('/sign_up/save', methods=['POST'])
-def sign_up():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    password = request.form.get('password')
-    password_hash = hashlib.sha256(password. encode('utf-8')).hexdigest()
-    doc = {
-        "name": name,
-        "email": email,
-        "category": 'visitor',
-        "password": password_hash
-    }
-    db.users.insert_one(doc)
-    return jsonify({'result': 'success'})
-
-
 
 
 @app.route('/addmenu')
@@ -87,16 +66,10 @@ def login():
 def popular():
     return render_template('popular.html')
 
-
-@app.route('/register')
-def register():
-    return render_template('register.html')
-
-
 @app.route('/review')
 def review():
     return render_template('review.html')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
