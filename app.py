@@ -23,9 +23,7 @@ SECRET_KEY = 'secret1141'
 TOKEN_KEY = 'mytoken'
 
 @app.route('/')
-
 def main():
-    return render_template('homepage.html')
     return render_template('index.html')
 
 @app.route('/home', methods=['GET'])
