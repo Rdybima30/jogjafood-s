@@ -496,12 +496,13 @@ header .icons #menu-bars {
     width: 500px;
     height: 300px;
     margin: 20px auto;
+<<<<<<< HEAD
     /* display: flex;
+=======
+    display: flex;
+>>>>>>> 53a902fb8f79a7a97d4c20c41e6554b6ace53a6c
     justify-content: center;
     align-items: center;
-    margin: center;
-    background-position: center;
-    background-repeat: no-repeat; */
 }
 
 .detail .deskripsi {
