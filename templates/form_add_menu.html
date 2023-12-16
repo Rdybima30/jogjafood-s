@@ -7,24 +7,19 @@
     <title>Add Menu Detail</title>
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-        <!-- Bootstrap requirement jQuery pada posisi pertama, kemudian Popper.js, danyang terakhit Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    
-        <!-- custom css file link  -->
+
+
+
+    <!-- custom css file link  -->
     <link rel="stylesheet" href="../static/add_menu_admin_detail.css">
-    
+
     <script>
         function addmenu() {
             let judul = $('#judul').val();
@@ -46,10 +41,10 @@
                 return alert('Insert your harga')
             }
 
-            // let lokasi = $('#lokasi').val();
-            // if (!lokasi) {
-            //     return alert('Insert your lokasi')
-            // }
+            let lokasi = $('#lokasi').val();
+            if (!lokasi) {
+                return alert('Insert your lokasi')
+            }
 
 
             let file = $("#image").prop("files")[0];
@@ -64,7 +59,7 @@
             form_data.append("kategori", kategori);
             form_data.append("deskripsi", deskripsi);
             form_data.append("harga", harga);
-            // form_data.append("lokasi", lokasi);
+            form_data.append("lokasi", lokasi);
 
 
             $.ajax({
@@ -110,45 +105,44 @@
     <section class="edit" id="edit">
         <div class="container">
             <!-- <form> -->
-                <div class="inputBox">
-                    <div class="input">
-                        <label for="judul">Judul Menu</label>
-                        <input type="text" class="form-control input" id="judul" placeholder="Masukkan judul menu">
-                    </div>
-                    <div class="input">
-                        <label for="kategori">Kategori</label>
-                        <input type="text" class="form-control input" id="kategori"
-                            placeholder="Masukkan kategori menu">
-                    </div>
-                    <div class="input">
-                        <label for="image">Upload gambar</label>
-                        <div class="control is-expanded">
-                            <div class="file has-name">
-                                <label class="file-label" style="width: 100%">
-                                    <input type="file" class="form-control" id="image"
-                                        style="width: 100%; border: 1px solid grey; border-radius: 5px; height: auto;">
-                                    <!-- <span id="file-name" class="file-name" style="width: 100%; max-width: 100%"></span> -->
-                                </label>
-                            </div>
+            <div class="inputBox">
+                <div class="input">
+                    <label for="judul">Judul Menu</label>
+                    <input type="text" class="form-control input" id="judul" placeholder="Masukkan judul menu">
+                </div>
+                <div class="input">
+                    <label for="kategori">Kategori</label>
+                    <input type="text" class="form-control input" id="kategori" placeholder="Masukkan kategori menu">
+                </div>
+                <div class="input">
+                    <label for="image">Upload gambar</label>
+                    <div class="control is-expanded">
+                        <div class="file has-name">
+                            <label class="file-label" style="width: 100%">
+                                <input type="file" class="form-control" id="image"
+                                    style="width: 100%; border: 1px solid grey; border-radius: 5px; height: auto;">
+                                <!-- <span id="file-name" class="file-name" style="width: 100%; max-width: 100%"></span> -->
+                            </label>
                         </div>
                     </div>
-                    <div class="input">
-                        <label for="deskripsi">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Tuliskan deskripsi menu" id="deskripsi"></textarea>
-                    </div>
-                    <div class="input">
-                        <label for="harga">Harga</label>
-                        <input type="text" class="form-control input" id="harga" placeholder="Masukkan harga menu">
-                    </div>
-                    <div class="input">
-                        <label for="lokasi">Lokasi</label>
-                        <input type="text" class="form-control input" id="lokasi" placeholder="Masukkan lokasi menu">
-                    </div>
                 </div>
-                <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/addmenu"
-                        style="color: black;">Cancel</a></button>
-                <button type="submit" class="btn btn-secondary save-button" style="float: right; color: black;"
-                    onclick="addmenu()">Add</button>
+                <div class="input">
+                    <label for="deskripsi">Deskripsi</label>
+                    <textarea class="form-control" placeholder="Tuliskan deskripsi menu" id="deskripsi"></textarea>
+                </div>
+                <div class="input">
+                    <label for="harga">Harga</label>
+                    <input type="text" class="form-control input" id="harga" placeholder="Masukkan harga menu">
+                </div>
+                <div class="input">
+                    <label for="lokasi">Lokasi</label>
+                    <input type="text" class="form-control input" id="lokasi" placeholder="Masukkan lokasi menu">
+                </div>
+            </div>
+            <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/addmenu"
+                    style="color: black;">Cancel</a></button>
+            <button type="submit" class="btn btn-secondary save-button" style="float: right; color: black;"
+                onclick="addmenu()">Add</button>
             <!-- </form> -->
         </div>
     </section>

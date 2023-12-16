@@ -119,6 +119,53 @@ def api_valid():
             "msg": msg}
         )
 
+@app.route("/addmenu")
+def addmenu():
+    return render_template("addmenu.html")
+
+@app.route("/formaddmenu")
+def formaddmenu():
+    return render_template("form_add_menu.html")
+
+@app.route('/posting', methods=['POST'])
+def posting():
+    # sample_receive = request.form.get('sample_give')
+    # print(sample_receive)
+    judul = request.form.get('judul')
+    kategori = request.form.get('kategori')
+    deskripsi = request.form.get('deskripsi')
+    harga = request.form.get('harga')
+    lokasi = request.form.get('lokasi')
+    
+    today = datetime.now()
+    mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
+   
+    file = request.files["image"]
+    extension = file.filename.split('.')[-1] 
+    filename = f'post-{mytime}.{extension}'
+    save_to = f'static/posting/{filename}'
+    file.save(save_to)
+
+
+    doc = {
+        'judul': judul,
+        'file': filename,
+        'kategori': kategori,
+        'deskripsi': deskripsi,
+        'harga': harga,
+        'lokasi': lokasi
+    }
+
+    db.menu.insert_one(doc)
+    return jsonify({'msg': 'Data was saved!!'})
+
+@app.route('/showmenu', methods=['GET'])
+def show_menu():
+    # sample_receive = request.args.get('sample_give')
+    # print(sample_receive)
+    menu = list(db.menu.find({},{'_id': False}))
+    return jsonify({'menu': menu})
+
 @app.route("/kategori")
 def kategori():
     return render_template("kategori.html")
@@ -135,13 +182,7 @@ def review():
 def homepageadmin():
     return render_template("homepage_admin.html")
 
-@app.route("/addmenu")
-def addmenu():
-    return render_template("addmenu.html")
 
-@app.route("/formaddmenu")
-def formaddmenu():
-    return render_template("form_add_menu.html")
     
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

@@ -224,18 +224,18 @@ header .icons #menu-bars {
 }
 
 
-.kategori .box-container {
+.menu .menu-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     gap: 1.5rem;
 }
 
-.kategori .kategori_menu button {
+.menu .kategori_menu button {
     margin-top: 100px;
     margin-left: 10px;
 }
 
-.kategori .more {
+.menu .more {
     font-size: 15px;
     margin-top: 30px;
     /* display: flex;
@@ -251,7 +251,7 @@ header .icons #menu-bars {
     /* width: 100vh; */
 }
 
-.kategori .box-container .box {
+.menu .menu-container .box {
     padding: 2.5rem;
     background: #fff;
     border-radius: .5rem;
@@ -262,30 +262,31 @@ header .icons #menu-bars {
     text-align: center;
 }
 
-.kategori .box-container .box img {
+.menu .menu-container .box img {
     height: 17rem;
     margin: 1rem 0;
 }
 
-.kategori .box-container .box h3 {
+.menu .menu-container .box h3 {
     color: var(--black);
     font-size: 2.5rem;
 }
 
-.kategori .box-container .box .stars {
+.kategori .menu-container .box .stars {
     padding: 1rem 0;
 }
 
-.kategori .box-container .box .stars i {
+.menu .menu-container .box .stars i {
     font-size: 1.7rem;
     color: var(--gold);
 }
 
-.kategori .box-container .box p {
+.menu .menu-container .box p {
     color: var(--light-color);
     font-size: 1.6rem;
     padding: .5rem 0;
     line-height: 1.5;
+    text-align: left;
 }
 
 .footer .box-container {

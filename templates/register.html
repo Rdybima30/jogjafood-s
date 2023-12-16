@@ -6,29 +6,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Bulma CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
-        <!-- JS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-        <!-- costum css -->
-        <link rel="stylesheet" href="../static/style.css">
-    
-        <style>
-            /* mengatur backgound */
-            body {
-                height: 100vh;
-                background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../static/images/registrasi.jpg');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-        </style>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- costum css -->
+    <link rel="stylesheet" href="../static/style.css">
+
+    <style>
+        /* mengatur backgound */
+        body {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../static/images/registrasi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 
     <script>
         function register() {
@@ -61,48 +61,48 @@
 
 <body>
     <!-- <section class="container-fluid" style="background: transparent;"> -->
-        <!-- justify-content-center untuk mengatur posisi form agar berada di tengah-tengah -->
-        <section class="row justify-content-center" style="background: transparent;">
-            <section class="col-12 col-sm-6 col-md-4">
-                <!-- <form class="form-container"> -->
-                <div class="container">
-                    <h1 class="text-center font-weight-bold"> Register </h1>
-                    <div class="form-group">
-                        <label class="label" for="userid">Nama</label>
-                        <div class="control">
-                            <input type="text" class="input" id="userid" aria-describedby="emailHelp"
-                                placeholder="Masukkan  nama" />
-                        </div>
+    <!-- justify-content-center untuk mengatur posisi form agar berada di tengah-tengah -->
+    <section class="row justify-content-center" style="background: transparent;">
+        <section class="col-12 col-sm-6 col-md-4">
+            <!-- <form class="form-container"> -->
+            <div class="container">
+                <h1 class="text-center font-weight-bold"> Register </h1>
+                <div class="form-group">
+                    <label class="label" for="userid">Nama</label>
+                    <div class="control">
+                        <input type="text" class="input" id="userid" aria-describedby="emailHelp"
+                            placeholder="Masukkan  nama" />
                     </div>
-
-                    <div class="form-group">
-                        <label class="label" for="useremail">Email</label>
-                        <div class="control">
-                            <input type="text" class="input" id="useremail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email" />
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="label" for="userpw">Password</label>
-                        <div class="field">
-                            <div class="control">
-                                <input type="password" class="input" id="userpw" placeholder="Masukkan password" />
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <button onclick="register()" class="btn btn-secondary">Register</button>
-                    <button onclick="ClearInputs()" class="btn btn-secondary" style="float: right;">Clear</button>
-                    <div class="form-footer mt-2">
-                        <p> Sudah punya akun? <a href="/login">Sign In</a></p>
-                    </div>
-                    <!-- </form> -->
                 </div>
-            </section>
+
+                <div class="form-group">
+                    <label class="label" for="useremail">Email</label>
+                    <div class="control">
+                        <input type="text" class="input" id="useremail" aria-describedby="emailHelp"
+                            placeholder="Masukkan email" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="label" for="userpw">Password</label>
+                    <div class="field">
+                        <div class="control">
+                            <input type="password" class="input" id="userpw" placeholder="Masukkan password" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <button onclick="register()" class="btn btn-secondary">Register</button>
+                <button onclick="ClearInputs()" class="btn btn-secondary" style="float: right;">Clear</button>
+                <div class="form-footer mt-2">
+                    <p> Sudah punya akun? <a href="/login">Sign In</a></p>
+                </div>
+                <!-- </form> -->
+            </div>
         </section>
+    </section>
     <!-- </section> -->
 </body>
 

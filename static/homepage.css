@@ -262,7 +262,7 @@ header .icons #menu-bars {
 }
 
 .popular .box-container h3 {
-    text-align: center;
+    /* text-align: center; */
     font-size: 20px;
     margin-top: 10px;
 }
@@ -321,26 +321,26 @@ header .icons #menu-bars {
     font-size: 2.5rem;
 }
 
-.footer .box-container {
+.footer .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 1.5rem;
 }
 
-.footer .box-container .box h3 {
+.footer .footer-container .box h3 {
     padding: .5rem 0;
     font-size: 2.5rem;
     color: var(--gold);
 }
 
-.footer .box-container .box a {
+.footer .footer-container .box a {
     display: block;
     padding: .5rem 0;
     font-size: 1.5rem;
     color: var(--light-color);
 }
 
-.footer .box-container .box a:hover {
+.footer .footer-container .box a:hover {
     color: var(--gold);
     text-decoration: underline;
 }
