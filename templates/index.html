@@ -7,12 +7,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
 
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <link rel="stylesheet" href="../static/homepage.css">
+    <!--aos-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            // alert('Fully loaded');
+            listing();
+            // bsCustomFileInput.init()
+        })
+
+        function sign_out() {
+            $.removeCookie('mytoken', { path: '/' });
+            alert('Signed out!');
+            window.location.href = "/login";
+        }
+
+        function listing() {
+            $.ajax({
+                type: 'GET',
+                url: '/showmenu',
+                data: {},
+                success: function (response) {
+                    // console.log(response);
+                    let menu = response['menu'];
+                    for (let i = 0; i < menu.length; i++) {
+                        let judul = menu[i]['judul'];
+                        let deskripsi = menu[i]['deskripsi'];
+                        let file = menu[i]['file'];
+                        let harga = menu[i]['harga'];
+                        let temp_html = `
+                        <div class="box">
+                            <div class="image">
+                                <img src="../static/posting/${file}" alt="">
+                            </div>
+                            <div class="content">
+                                <a href="/detail_menu"><h3>${judul}</h3></a>
+                                <p> ${deskripsi}</p>
+                                <span class="price" style="font-size: 18px">Rp. ${harga}</span>
+                            </div>
+                        </div>
+                        `;
+                        $('.box-container').append(temp_html);
+                    }
+                }
+            });
+        }
+
+        AOS.init();
+        function logout() {
+            $.removeCookie('mytoken');
+            alert('success remove cookie')
+            window.location.href = '/';
+        }
+    </script>
 
 </head>
+
 
 <body>
 
@@ -23,11 +88,12 @@
         <a href="#" class="logo"><i class="fas fa-utensils"></i>jogjafood's</a>
 
         <nav class="navbar">
-            <a class="active" href="/">Home</a>
+            <a class="active" href="/home">Home</a>
             <a href="/kategori">Kategori</a>
             <a href="/popular">Popular</a>
             <a href="/review">FAQ & Review</a>
-            <a href="/register">Login</a>
+            <a href="/login">Login</a>
+            <!-- <a onclick="logout()">Login</a> -->
         </nav>
 
         <div class="icons">
@@ -86,183 +152,7 @@
         <h1 class="heading"> Makanan Popular Saat Ini </h1>
 
         <div class="box-container">
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/gudeg.jpg" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Gudeg</h3>
-                    <p>Gudeg adalah makanan yang terbuat dari nangka muda yang dimasak dengan santan. Biasanya terdapat
-                        isian seperti telor dan ayam.</p>
-
-                    <span class="price">Rp. 15.000</span>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/angkringan.jpg" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Angkringan</h3>
-                    <p>Kota Yogyakarta memang memiliki beragam angkringan legendaris yang menjual makanan khas seperti
-                        nasi kucing dan segala jenis sate-satean.</p>
-
-                    <span class="price">Rp. 5.000 - 10.000</span>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/soto.jpg" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Soto</h3>
-                    <p> Soto adalah makanan khas Indonesia seperti sop yang terbuat dari kaldu daging. soto disajikan
-                        dengan berbagai sayuran dan suwiran daging ayam.</p>
-                    <span class="price">Rp. 7.000</span>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/bakpia.jpg" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Bakpia</h3>
-                    <p>Bakpia merupakan salah satu makanan khas yang berasal dari jogja yang terbuat dari campuran
-                        kacang hijau dengan gula, yang dibungkus dengan tepung, lalu dipanggang.</p>
-                    <span class="price">Rp. 30.000</span>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/yangko.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Yangko</h3>
-                    <p>Yangko Jogja adalah makan dari adonan dari tepung ketan yang dibalut tepung gula dengan rasa
-                        manis dan khas.</p>
-
-                    <span class="price">20.000</span>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/geplak.jpg" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Geplak</h3>
-                    <p>Geplak memiliki tekstur kasar dengan bentuk bulatan - bulatan yang terbuat dari buah kelapa yang
-                        disajikan dengan rasa manis. </p>
-
-                    <span class="price">15.000</span>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/wedang-uwuh.jpg" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Wedang Uwuh</h3>
-                    <p>Wedang uwuh adalah salah satu minuman tradisional yang kerap digunakan dalam pengobatan
-                        tradisional.</p>
-
-                    <span class="price">8.000</span>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/wedang-ronde.jpg" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Wedang Ronde</h3>
-                    <p>Wedang ronde, salah satu minuman yang melegenda yang terdiri dari kuah jahe yang diberi isian
-                        ronde.</p>
-
-                    <span class="price">7.000</span>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="../static/images/kopi-jos.jpg" alt="">
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>Kopi Jos </h3>
-                    <p>Kopi jos atau kopi joss adalah kopi khas Yogyakarta yang disajikan bersama arang panas. </p>
-
-                    <span class="price">10.000</span>
-                </div>
-            </div>
+            <!-- SHOW MENU -->
 
         </div>
 
@@ -286,12 +176,12 @@
             <div class="content">
                 <h3>rekomendasi makanan khas yogyakarta terbaik</h3>
                 <p>jogjafood's merupakan website rekomendasi makanan dan minuman khas daerah istimewa yogyakarta. mulai
-                    dari makanan berat, mekanan ringan, munuman, dan lain-lain.
+                    dari jenis makanan, minuman, jajanan seprti gudeg, wedang uwuh, bakpia dan lain-lain.
                     jogjafood's menampilkan informasi berbagai jenis makanan berdasarkan kategori-kategori yang tersedia
                     serta menampilkan menu-menu populer pada saat ini.</p>
                 <p>kunjungi dan pantau terus website kami untuk lebih update makanan-makanan populer daerah yogyakarta.
                 </p>
-                <a href="#" class="btn">learn more</a>
+                <!-- <a href="#" class="btn">learn more</a> -->
             </div>
 
         </div>
@@ -300,53 +190,54 @@
 
     <!-- about section ends -->
 
-    <!-- footer section start -->
-    <footer>
-        <section class="footer" id="footer">
+    <!-- footer section starts  -->
 
-            <div class="box-container">
+    <section class="footer" id="footer">
 
-                <div class="box">
-                    <h3>Locations</h3>
-                    <a href="#">Yogyakarta</a>
-                    <a href="#">Bantul</a>
-                    <a href="#">Sleman</a>
-                    <a href="#">Depok</a>
-                    <a href="#">Kulon Progo</a>
-                </div>
+        <div class="footer-container">
 
-                <div class="box">
-                    <h3>Quick Links</h3>
-                    <a href="#home">home</a>
-                    <a href="#kategori">Kategori</a>
-                    <a href="#popular">Popular</a>
-                    <a href="#review">FAQ & Review</a>
-                </div>
-
-                <div class="box">
-                    <h3>Contact Info</h3>
-                    <a href="#">+62821-1359-1641</a>
-                    <a href="#">+62881-8679-264</a>
-                    <a href="#">+62822-4179-5668</a>
-                    <a href="#">jogjafood@gmail.com</a>
-                    <a href="#">Bantul, Yogyakarta - 1000001</a>
-                </div>
-
-                <div class="box">
-                    <h3>Follow Us</h3>
-                    <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span class="fab fa-facebook fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://twitter.com/rdybima"><span class="fab fa-twitter fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span class="fab fa-instagram fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span class="fab fa-linkedin fa-2x"></span></a>
-                </div>
+            <div class="box">
+                <h3>locations</h3>
+                <a href="#">Yogyakarta</a>
+                <a href="#">Bantul</a>
+                <a href="#">Sleman</a>
+                <a href="#">Depok</a>
+                <a href="#">Kulon Progo</a>
             </div>
-            <div class="credit"> copyright @2023 Kelompok 3 | Fullstack Web Development | LearningX</div>
-        </section>
-    </footer>
-    <!-- footer section end -->
-    <div class="loader-container">
+
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="#home">home</a>
+                <a href="#kategori">Kategori</a>
+                <a href="#popular">Popular</a>
+                <a href="#review">FAQ & Review</a>
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#">+62821-1359-1641</a>
+                <a href="#">+62881-8679-264</a>
+                <a href="#">+62822-4179-5668</a>
+                <a href="#">jogjafood@gmail.com</a>
+                <a href="#">Bantul, Yogyakarta - 1000001</a>
+            </div>
+
+            <div class="box">
+                <h3>Follow Us</h3>
+                <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span class="fab fa-facebook fa-2x"></span></a>
+                <a class="social-media-icon" href="https://twitter.com/rdybima"><span class="fab fa-twitter fa-2x"></span></a>
+                <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span class="fab fa-instagram fa-2x"></span></a>
+                <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span class="fab fa-linkedin fa-2x"></span></a>
+            </div>
+
+        </div>
+
+        <div class="credit"> copyright @2023 Kelompok 3 | Fullstack Web Development | LearningX</div>
+
+    </section>
+    <!-- <div class="loader-container">
         <img src="../static/images/loader.gif" alt="">
-    </div>
+    </div> -->
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
