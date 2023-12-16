@@ -190,6 +190,7 @@ def jajanan():
 def kategori_jajanan():
     return render_template("kategori_jajanan.html")
 
+
 @app.route("/detail")
 def detail_menu():
     return render_template("detail_menu.html")
@@ -205,6 +206,38 @@ def detail():
 @app.route("/edit")
 def edit():
     return render_template("edit.html")
+
+@app.route('/update_menu', methods=['POST'])
+def update():
+    # sample_receive = request.form.get('sample_give')
+    # print(sample_receive)
+    judul = request.form.get('judul')
+    kategori = request.form.get('kategori')
+    deskripsi = request.form.get('deskripsi')
+    harga = request.form.get('harga')
+    lokasi = request.form.get('lokasi')
+    
+    today = datetime.now()
+    mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
+   
+    file = request.files["image"]
+    extension = file.filename.split('.')[-1] 
+    filename = f'post-{mytime}.{extension}'
+    save_to = f'static/posting/{filename}'
+    file.save(save_to)
+
+
+    doc = {
+        'judul': judul,
+        'file': filename,
+        'kategori': kategori,
+        'deskripsi': deskripsi,
+        'harga': harga,
+        'lokasi': lokasi
+    }
+
+    db.menu.update_one({"judul": judul}, {"$set": doc})
+    return jsonify({'msg': 'Data was edited!!'})
 
 @app.route("/review")
 def review():
