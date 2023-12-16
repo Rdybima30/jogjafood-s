@@ -44,7 +44,7 @@
                     } else if (response['result'] === 'success') {
                         $.cookie('mytoken', response['token']);
                         alert('Login complete!')
-                        window.location.href = '/homepage'
+                        window.location.href = '/'
                     } else {
                         alert(response['msg'])
                     }
