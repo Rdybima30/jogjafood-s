@@ -37,11 +37,14 @@
                 url: "/api/login",
                 data: { id_give: $('#userid').val(), pw_give: $('#userpw').val() },
                 success: function (response) {
-                    if (response['result'] === 'success') {
+                    if ($('#userid').val() === 'admin' & response['result'] === 'success') {
                         $.cookie('mytoken', response['token']);
-
                         alert('Login complete!')
-                        window.location.href = '/'
+                        window.location.href = '/homepageadmin'
+                    } else if (response['result'] === 'success') {
+                        $.cookie('mytoken', response['token']);
+                        alert('Login complete!')
+                        window.location.href = '/homepage'
                     } else {
                         alert(response['msg'])
                     }

@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <link rel="stylesheet" href="../static/homepage.css">
-
+    <script>
+        function sign_out() {
+            $.removeCookie('mytoken', { path: '/' });
+            alert('Signed out!');
+            window.location.href = "/login";
+        }
+    </script>
 
 </head>
 
@@ -27,7 +33,7 @@
             <a href="/kategori">Kategori</a>
             <a href="/popular">Popular</a>
             <a href="/review">FAQ & Review</a>
-            <a href="/logout">Logout</a>
+            <a href="#">Logout</a>
         </nav>
 
         <div class="icons">

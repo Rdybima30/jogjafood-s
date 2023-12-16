@@ -521,7 +521,7 @@ form {
 /* css detail end */
 
 /* css edit start */
-.edit form {
+.edit .container {
     max-width: 90rem;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
@@ -532,18 +532,18 @@ form {
     margin: 50px auto;
 }
 
-.edit form .inputBox .input {
+.edit .inputBox .input {
     width: 100%;
 }
 
-.edit form .inputBox .input label {
+.edit .inputBox .input label {
     display: block;
     /* padding: 10px 0; */
     font-size: 18px;
 }
 
-.edit form .inputBox .input textarea,
-.edit form .inputBox .input .input {
+.edit .inputBox .input textarea,
+.edit .inputBox .input .input {
     background: #eee;
     border-radius: 5px;
     padding: 12px;
@@ -554,17 +554,17 @@ form {
     width: 100%;
 }
 
-.edit form .inputBox .input input:focus,
-.edit form .inputBox .input textarea:focus {
+.edit .inputBox .input input:focus,
+.edit .inputBox .input textarea:focus {
     border: 2px solid var(--blue);
 }
 
-.edit form .inputBox .input textarea {
+.edit .inputBox .input textarea {
     height: 80px;
 }
 
-form .save-button,
-form .close-button {
+.save-button,
+.close-button {
     display: inline-block;
     padding: 10px 20px;
     margin: auto 10px;
@@ -576,8 +576,8 @@ form .close-button {
     margin-top: 10px;
 }
 
-form .save-button:hover,
-form .close-button:hover {
+.save-button:hover,
+.close-button:hover {
     background: var(--gold);
     letter-spacing: .1rem;
 }
