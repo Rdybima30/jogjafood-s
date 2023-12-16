@@ -297,19 +297,32 @@ header .icons #menu-bars {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 1.5rem;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+    gap: 0.5rem;
+    text-align: center;
+    padding-top: 20px;
 }
 
 .footer .box-container .box h3 {
-    padding: .5rem 0;
-    font-size: 2.5rem;
+    padding: px 0;
+    font-size: 20px;
     color: var(--gold);
 }
 
 .footer .box-container .box a {
     display: block;
-    padding: .5rem 0;
-    font-size: 1.5rem;
+    padding: 3px 0;
+    font-size: 12px;
     color: var(--light-color);
+    text-align: left;
+    padding-left: 38%;
 }
 
 .footer .box-container .box a:hover {
@@ -319,18 +332,13 @@ header .icons #menu-bars {
 
 .footer .credit {
     text-align: center;
-    border-top: .1rem solid rgba(0, 0, 0, .1);
-    font-size: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    font-size: 15px;
     color: var(--black);
-    padding: .5rem;
-    padding-top: 1.5rem;
-    margin-top: 1.5rem;
+    padding: 12px;
+    padding-top: 10px;
+    margin-top: 10px;
 }
-
-.footer .credit span {
-    color: var(--gold);
-}
-
 /* Style for images Box */
 
 html {
