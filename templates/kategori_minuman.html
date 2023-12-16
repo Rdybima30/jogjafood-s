@@ -22,6 +22,10 @@
 
   <!-- custom css file link  -->
   <link rel="stylesheet" href="../static/add_menu_admin.css">
+  <!--aos-->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
     $(document).ready(function () {
       // alert('Fully loaded');
@@ -42,21 +46,29 @@
             let deskripsi = menu[i]['deskripsi'];
             let file = menu[i]['file'];
             let kategori = menu[i]['kategori'];
-            if(kategori == 'Minuman') {
+            if (kategori == 'Minuman') {
               let temp_html = `
                     <div class="box">
                       <img src="../static/posting/${file}" alt="Klepon">
                       <div class="box-content">
-                        <a href="/detail_menu"><h3>${judul}</h3></a>
+                        <a href="/detail"><h3>${judul}</h3></a>
                         <p>${deskripsi}</p>
                       </div>
                     </div>
                     `;
-            $('.menu-container').append(temp_html);
+              $('.menu-container').append(temp_html);
             }
           }
         }
       });
+    }
+  </script>
+  <script>
+    AOS.init();
+    function logout() {
+      $.removeCookie('mytoken');
+      alert('success remove cookie')
+      window.location.href = '/';
     }
   </script>
 
@@ -73,7 +85,8 @@
     <nav class="navbar">
       <a href="/homepageadmin">Home</a>
       <a class="active" href="#add menu">Add Menu</a>
-      <a href="#logout">Logout</a>
+      <!-- <a href="#logout">Logout</a> -->
+      <a onclick="logout()">Logout</a>
     </nav>
 
     <div class="icons">
@@ -97,10 +110,14 @@
     <!-- <center> -->
     <!-- Tombol Kategori -->
     <div class="kategori_menu" id="kategori_menu">
-      <button type="button" class=" btn btn-secondary"><a href="/addmenu" style=" color: white;">Kategori Makanan</a></button>
-      <button type="button" class="btn btn-secondary"><a href="/kategoriminuman" style=" color: white;">Kategori Minuman</a></button>
-      <button type="button" class="btn btn-secondary"><a href="/kategorijajanan" style=" color: white;">Kategori Jajanan</a></button>
-      <button type="button" class="btn btn-secondary" style="float: right;"><a href="/formaddmenu" style=" color: white;">Add Menu</a></button>
+      <button type="button" class=" btn btn-secondary"><a href="/addmenu" style=" color: white;">Kategori
+          Makanan</a></button>
+      <button type="button" class="btn btn-secondary"><a href="/kategoriminuman" style=" color: white;">Kategori
+          Minuman</a></button>
+      <button type="button" class="btn btn-secondary"><a href="/kategorijajanan" style=" color: white;">Kategori
+          Jajanan</a></button>
+      <button type="button" class="btn btn-secondary" style="float: right;"><a href="/formaddmenu"
+          style=" color: white;">Add Menu</a></button>
     </div>
     <!-- Tombol Kategori End -->
     <div class="menu-container" style="margin-top: 30px;">

@@ -238,7 +238,8 @@ header .icons #menu-bars {
     color: #fafafa;
     margin-top: 50px;
 }
-.form-group label{
+
+.form-group label {
     font-size: 18px;
     color: white;
 }
@@ -499,11 +500,9 @@ header .icons #menu-bars {
     justify-content: center;
     align-items: center;
     /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    margin: center;
-    background-position: center;
-    background-repeat: no-repeat; */
+    align-items: center;*/
 }
 
 .detail .deskripsi {

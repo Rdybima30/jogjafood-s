@@ -22,6 +22,11 @@
 
   <!-- custom css file link  -->
   <link rel="stylesheet" href="../static/add_menu_admin.css">
+
+  <!--aos-->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
     $(document).ready(function () {
       // alert('Fully loaded');
@@ -45,7 +50,7 @@
                     <div class="box">
                       <img src="../static/posting/${file}" alt="Klepon">
                       <div class="box-content">
-                        <a href="/detail_menu"><h3>${judul}</h3></a>
+                        <a href="/detail"><h3>${judul}</h3></a>
                         <p>${deskripsi}</p>
                       </div>
                     </div>
@@ -54,6 +59,14 @@
           }
         }
       });
+    }
+  </script>
+  <script>
+    AOS.init();
+    function logout() {
+      $.removeCookie('mytoken');
+      alert('success remove cookie')
+      window.location.href = '/';
     }
   </script>
 
@@ -70,7 +83,8 @@
     <nav class="navbar">
       <a class="active" href="/homepageadmin">Home</a>
       <a href="/addmenu">Add Menu</a>
-      <a href="#logout">Logout</a>
+      <!-- <a href="#logout">Logout</a> -->
+      <a onclick="logout()">Logout</a>
     </nav>
 
     <div class="icons">

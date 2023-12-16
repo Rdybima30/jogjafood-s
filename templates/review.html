@@ -27,6 +27,19 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="../static/style.css">
+
+    <!--aos-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+        function logout() {
+            $.removeCookie('mytoken');
+            alert('success remove cookie')
+            window.location.href = '/';
+        }
+    </script>
 </head>
 
 <body>
@@ -41,7 +54,8 @@
                 <a href="/kategori">Kategori</a>
                 <a href="/popular">Popular</a>
                 <a class="active" href="/review">FAQ & Review</a>
-                <a href="#">Logout</a>
+                <!-- <a href="#">Logout</a> -->
+                <a onclick="logout()">Logout</a>
             </nav>
         </nav>
 
