@@ -23,7 +23,7 @@ TOKEN_KEY = 'mytoken'
 
 @app.route("/")
 def index():
-    return render_template("homepage.html")
+    return render_template("index.html")
 
 @app.route("/home")
 def home():
@@ -32,13 +32,13 @@ def home():
         payload = jwt.decode(token_receive,
                  SECRET_KEY, algorithms=["HS256"])
         user_info = db.user.find_one({"id": payload["id"]})
-        return render_template("index.html",
+        return render_template("homepage.html",
             nickname=user_info["nick"])
     except jwt.ExpiredSignatureError:
-        return redirect(url_for("index",
+        return redirect(url_for("homepage",
             msg="Your login token has expired"))
     except jwt.exceptions.DecodeError:
-        return redirect(url_for("index",
+        return redirect(url_for("homepage",
             msg="There was an issue logging you in"))
     
 @app.route("/login")
