@@ -42,7 +42,7 @@
             let deskripsi = menu[i]['deskripsi'];
             let file = menu[i]['file'];
             let kategori = menu[i]['kategori'];
-            if(kategori == 'Makanan') {
+            if(kategori == 'Jajanan') {
               let temp_html = `
                     <div class="box">
                       <img src="../static/posting/${file}" alt="Klepon">
@@ -98,8 +98,8 @@
     <!-- Tombol Kategori -->
     <div class="kategori_menu" id="kategori_menu">
       <button type="button" class=" btn btn-secondary"><a href="/addmenu" style=" color: white;">Kategori Makanan</a></button>
-      <button type="button" class="btn btn-secondary"><a href="/kategoriminuman" style=" color: white;">Kategori Minuman</a></button>
-      <button type="button" class="btn btn-secondary"><a href="/kategorijajanan" style=" color: white;">Kategori Jajanan</a></button>
+      <button type="button" class="btn btn-secondary"><a href="/minuman" style=" color: white;">Kategori Minuman</a></button>
+      <button type="button" class="btn btn-secondary"><a href="/jajanan" style=" color: white;">Kategori Jajanan</a></button>
       <button type="button" class="btn btn-secondary" style="float: right;"><a href="/formaddmenu" style=" color: white;">Add Menu</a></button>
     </div>
     <!-- Tombol Kategori End -->

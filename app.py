@@ -178,9 +178,17 @@ def makanan():
 def minuman():
     return render_template("minuman.html")
 
+@app.route("/kategoriminuman")
+def kategori_minuman():
+    return render_template("kategori_minuman.html")
+
 @app.route("/jajanan")
 def jajanan():
     return render_template("jajanan.html")
+
+@app.route("/kategorijajanan")
+def kategori_jajanan():
+    return render_template("kategori_jajanan.html")
 
 @app.route("/detail")
 def detail_menu():

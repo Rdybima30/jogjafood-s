@@ -234,6 +234,10 @@ header .icons #menu-bars {
     margin-top: 100px;
     margin-left: 10px;
 }
+.menu .kategori_menu .btn:hover {
+    background: var(--gold);
+    letter-spacing: .1rem;
+}
 
 .menu .more {
     font-size: 15px;
