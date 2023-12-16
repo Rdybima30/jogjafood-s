@@ -19,6 +19,41 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="../static/add_menu_admin_detail.css">
+    <script>
+        function update_menu() {
+            let judul = $("#judul").val();
+            let kategori = $("#kategori").val();
+            let deskripsi = $("#deskripsi").val();
+            let harga = $("#harga").val();
+            let lokasi = $("#lokasi").val();
+            let file = $("#image")[0].files[0];
+
+            let form_data = new FormData();
+
+            form_data.append("image", file);
+            form_data.append("judul", judul);
+            form_data.append("kategori", kategori);
+            form_data.append("deskripsi", deskripsi);
+            form_data.append("harga", harga);
+            form_data.append("lokasi", lokasi);
+            console.log(image, judul, kategori, deskripsi, harga, lokasi);
+
+            $.ajax({
+                type: "POST",
+                url: "/update_menu",
+                data: form_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response["result"] === "success") {
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                },
+            });
+        }
+    </script>
 
 </head>
 
@@ -85,8 +120,8 @@
             </div>
             <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/addmenu"
                     style="color: black;">Cancel</a></button>
-            <button type="submit" class="btn btn-secondary save-button" style="float: right; color: black;"
-                >Edit</button>
+            <button onclick="update()" type="submit" class="btn btn-secondary save-button"
+                style="float: right; color: black;">Edit</button>
             <!-- </form> -->
         </div>
     </section>
