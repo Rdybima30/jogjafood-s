@@ -191,7 +191,7 @@ def kategori_jajanan():
     return render_template("kategori_jajanan.html")
 
 
-@app.route("/detail")
+@app.route("/detail_menu")
 def detail_menu():
     return render_template("detail_menu.html")
 
@@ -199,7 +199,7 @@ def detail_menu():
 def popular():
     return render_template("popular.html")
 
-@app.route("/detail_menu")
+@app.route("/detail")
 def detail():
     return render_template("detail.html")
 
