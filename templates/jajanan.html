@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Kategori Jajanan</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
@@ -28,6 +27,12 @@
             // bsCustomFileInput.init()
         })
 
+        function sign_out() {
+            $.removeCookie('mytoken', { path: '/' });
+            alert('Signed out!');
+            window.location.href = "/login";
+        }
+
         function listing() {
             $.ajax({
                 type: 'GET',
@@ -41,19 +46,23 @@
                         let deskripsi = menu[i]['deskripsi'];
                         let file = menu[i]['file'];
                         let harga = menu[i]['harga'];
-                        let temp_html = `
-                        <div class="box">
-                            <div class="image">
-                                <img src="../static/posting/${file}" alt="">
-                            </div>
-                            <div class="content">
-                                <a href="/detail"><h3>${judul}</h3></a>
-                                <p> ${deskripsi}</p>
-                                <span class="price" style="font-size: 18px">Rp. ${harga}</span>
-                            </div>
-                        </div>
-                        `;
+                        let kategori = menu[i]['kategori'];
+
+                        if(kategori == 'Jajanan') {
+                            let temp_html = `
+                                <div class="box">
+                                    <div class="image">
+                                        <img src="../static/posting/${file}" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <a href="/detail"><h3>${judul}</h3></a>
+                                        <p> ${deskripsi}</p>
+                                        <span class="price" style="font-size: 18px">Rp. ${harga}</span>
+                                    </div>
+                                </div>
+                            `;
                         $('.box-container').append(temp_html);
+                        }
                     }
                 }
             });
@@ -61,6 +70,7 @@
     </script>
 
 </head>
+
 
 <body>
 
@@ -72,8 +82,8 @@
 
         <nav class="navbar">
             <a href="/home">Home</a>
-            <a href="/kategori">Kategori</a>
-            <a  class="active" href="/popular">Popular</a>
+            <a class="active" href="/kategori">Kategori</a>
+            <a href="/popular">Popular</a>
             <a href="/review">FAQ & Review</a>
             <a href="#">Logout</a>
         </nav>
@@ -96,10 +106,12 @@
     </form>
 
 
-    <section class="popular" id="popular" style="margin-top: 50px;">
+    <!-- MAKANAN POPULER -->
 
-        <h3 class="sub-heading"> Popular </h3>
-        <h1 class="heading"> Makanan Popular Saat Ini </h1>
+    <section class="popular" id="popular" style="margin-top: 70px;">
+
+        <h3 class="sub-heading"> Kategori Jajanan </h3>
+        <h1 class="heading"> Pilih Makanan Yang Kamu Cari</h1>
 
         <div class="box-container">
             <!-- SHOW MENU -->
@@ -109,6 +121,7 @@
     </section>
 
     <!-- popular section ends -->
+
 
     <!-- footer section starts  -->
 

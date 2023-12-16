@@ -90,24 +90,36 @@
 </head>
 
 <body>
-    <header>
+  <!-- header section starts      -->
 
-        <a href="#" class="logo"><i class="fas fa-utensils"></i>jogjafood's</a>
+  <header>
 
-        <nav class="navbar">
-            <a class="active" href="#home">Home</a>
-            <a href="/addmenu">Add Menu</a>
-            <a href="#logout">Logout</a>
-        </nav>
+    <a href="#" class="logo"><i class="fas fa-utensils"></i>jogjafood's</a>
 
-        <div class="icons">
-            <i class="fas fa-bars" id="menu-bars"></i>
-            <i class="fas fa-search" id="search-icon"></i>
-        </div>
+    <nav class="navbar">
+        <a class="active" href="/home">Home</a>
+        <a href="/kategori">Kategori</a>
+        <a href="/popular">Popular</a>
+        <a href="/review">FAQ & Review</a>
+        <a href="#">Logout</a>
+    </nav>
 
-    </header>
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <i class="fas fa-search" id="search-icon"></i>
+    </div>
 
-    <!-- home section starts  -->
+</header>
+
+<!-- header section ends-->
+
+<!-- search form  -->
+
+<form action="" id="search-form">
+    <input type="search" placeholder="search here..." name="" id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
 
     <!-- detail section start -->
     <section class="detail" id="detail">
@@ -131,8 +143,7 @@
                     width="90%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/homepageadmin" style="color: white;">Close</a></button>
-            <button type="edit" class="btn btn-secondary edit-button" style="float: right;"><a href="/edit" style="color: white;">Edit</a></button>
+            <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/" style="color: white;">Close</a></button>
         </div>
     </section>
 

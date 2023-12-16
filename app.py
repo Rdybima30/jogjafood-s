@@ -170,9 +170,33 @@ def show_menu():
 def kategori():
     return render_template("kategori.html")
 
+@app.route("/makanan")
+def makanan():
+    return render_template("makanan.html")
+
+@app.route("/minuman")
+def minuman():
+    return render_template("minuman.html")
+
+@app.route("/jajanan")
+def jajanan():
+    return render_template("jajanan.html")
+
+@app.route("/detail")
+def detail_menu():
+    return render_template("detail_menu.html")
+
 @app.route("/popular")
 def popular():
     return render_template("popular.html")
+
+@app.route("/detail_menu")
+def detail():
+    return render_template("detail.html")
+
+@app.route("/edit")
+def edit():
+    return render_template("edit.html")
 
 @app.route("/review")
 def review():
