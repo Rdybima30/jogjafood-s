@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
-
     <!-- custom css file link  -->
     <link rel="stylesheet" href="../static/add_menu_admin_detail.css">
+    <!--aos-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
         function addmenu() {
@@ -75,6 +76,14 @@
             });
         }
     </script>
+    <script>
+        AOS.init();
+        function logout() {
+            $.removeCookie('mytoken');
+            alert('success remove cookie')
+            window.location.href = '/';
+        }
+    </script>
 
 </head>
 
@@ -88,7 +97,8 @@
         <nav class="navbar">
             <a href="/homepageadmin">Home</a>
             <a class="active" href="#add menu">Add Menu</a>
-            <a href="#logout">Logout</a>
+            <!-- <a href="#logout">Logout</a> -->
+            <a onclick="logout()">Logout</a>
         </nav>
 
         <div class="icons">
