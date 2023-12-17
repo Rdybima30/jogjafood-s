@@ -33,7 +33,7 @@ def home():
                  SECRET_KEY, algorithms=["HS256"])
         user_info = db.user.find_one({"id": payload["id"]})
         return render_template("homepage.html",
-            nickname=user_info["nick"])
+            nickname=user_info["id"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("homepage",
             msg="Your login token has expired"))
@@ -87,10 +87,9 @@ def api_login():
         return jsonify({"result": "fail", "msg": "Either your email or your password is incorrect"})
 
     
-@app.route("/api/nick", methods=["GET"])
+@app.route("/api/id", methods=["GET"])
 def api_valid():
     token_receive = request.cookies.get("mytoken")
-
     try:
         payload = jwt.decode(
             token_receive,
@@ -104,7 +103,7 @@ def api_valid():
         )
         return jsonify({
             "result": "success",
-            "nickname": userinfo["nick"]}
+            "nickname": userinfo["id"]}
             )
     except jwt.ExpiredSignatureError:
         msg = "Your token has expired"
@@ -131,6 +130,7 @@ def formaddmenu():
 def posting():
     # sample_receive = request.form.get('sample_give')
     # print(sample_receive)
+    # judul_menu = db.menu.find_one({'judul': judul})
     judul = request.form.get('judul')
     kategori = request.form.get('kategori')
     deskripsi = request.form.get('deskripsi')
@@ -242,6 +242,31 @@ def update():
 @app.route("/review")
 def review():
     return render_template("review.html")
+
+@app.route("/komentar", methods=["POST"])
+def komentar():
+        name = request.form["name"]
+        comment = request.form["comment"]
+        star = request.form["star"]
+        date = request.form["date"]
+        doc = {
+            # "id": userinfo["id"],
+            "name": name,
+            "star": star,
+            "comment": comment,
+            "date": date
+        }
+        db.komentar.insert_one(doc)
+
+        return jsonify({
+            'result':'success',
+            'msg':'komentar success'
+        })
+
+@app.route('/showkomentar', methods=['GET'])
+def show_komentar():
+    komentar = list(db.komentar.find({},{'_id': False}))
+    return jsonify({'komentar': komentar})
 
 @app.route("/homepageadmin")
 def homepageadmin():

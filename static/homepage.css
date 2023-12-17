@@ -228,6 +228,7 @@ header .icons #menu-bars {
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
+    margin-top: 5px;
 }
 
 .about .row .image {

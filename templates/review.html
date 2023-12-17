@@ -8,22 +8,16 @@
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <!-- Bootstrap requirement jQuery pada posisi pertama, kemudian Popper.js, danyang terakhit Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="../static/style.css">
@@ -33,11 +27,76 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        AOS.init();
+        $(document).ready(function () {
+            // alert('Fully loaded');
+            list_komentar();
+            // bsCustomFileInput.init()
+        })
+
+        // AOS.init();
         function logout() {
             $.removeCookie('mytoken');
             alert('success remove cookie')
             window.location.href = '/';
+        }
+
+        function komentar() {
+            // let url = $('#url').val();
+            let star = $('#star').val();
+            let name = $('#name').val();
+            let comment = $('#comment').val();
+            let today = new Date().toISOString()
+
+            $.ajax({
+                type: 'POST',
+                url: '/komentar',
+                data: {
+                    // url_give: url,
+                    name: name,
+                    star: star,
+                    comment: comment,
+                    date: today
+                },
+                success: function (response) {
+                    alert(response['msg'])
+                    // alert('Sukses menambahkan komentar')
+                    window.location.reload('/review');
+                }
+            });
+        }
+
+        function list_komentar() {
+            $.ajax({
+                type: 'GET',
+                url: '/showkomentar',
+                data: {},
+                success: function (response) {
+                    // console.log(response);
+                    let komentar = response['komentar'];
+                    for (let i = 0; i < komentar.length; i++) {
+                        let name = komentar[i]['name'];
+                        let star = komentar[i]['star'];
+                        let comment = komentar[i]['comment'];
+                        let date = komentar[i]['date'];
+                        let star_image = '⭐'.repeat(star);
+                        let temp_html = `
+                        <div class="swiper-slide slide">
+                                <div class="user">
+                                    <img src="../static/images/user.jpg" alt="">
+                                    <div class="user-info">
+                                        <h4>${name}</h4>
+                                        <div class="stars">${star_image}
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>${comment}</p>
+                                <span>${date}</span>
+                            </div>
+                        `;
+                        $('.swiper-wrapper').append(temp_html);
+                    }
+                }
+            });
         }
     </script>
 </head>
@@ -72,102 +131,48 @@
     <section class="faq" id="faq">
         <h3 class="sub-heading"><b> FAQ </h3></b>
         <h1 class="heading"> Silahkan isi komentar</h1>
-
-        <form>
-            <div class="inputBox">
-                <div class="input">
-                    <label for="floatingInput">Penilaian</label>
-                    <select class="form-select" id="inputGroupSelect01">
-                        <option selected>-- Select a rating --</option>
-                        <option value="1">⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                    </select>
-                </div>
-                <div class="input">
-                    <label for="floatingInput">Komentar</label>
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
-                </div>
+        <div class="inputBox">
+            <div class="input">
+                <label for="name">Nama</label>
+                <input type="text" class="form-control" id="name" placeholder="Insert name">
             </div>
-            <button type="submit" class="btn btn-secondary btn-block" style="color: black;">Kirim</button>
-        </form>
+            <div class="input">
+                <label for="star">Penilaian</label>
+                <select class="form-select" id="star">
+                    <option selected>-- Select a rating --</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
+            <div class="input">
+                <label for="floatingTextarea2">Komentar</label>
+                <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+            </div>
+            <button onclick="komentar()" type="submit" class="btn btn-secondary btn-block"
+                style="color: black;">Kirim</button>
+        </div>
     </section>
     <!-- faq section ends -->
 
     <!-- review section start -->
-    <section class="review" id="review" style="margin-top: 5%;">
-        <h3 class="sub-heading"><b>Review</h3></b>
+    <section class="review" id="review">
+        <h3 class="sub-heading" style="padding-top: 10px;"><b>Review</b></h3>
         <h1 class="heading">Review Pelanggan</h1>
-
 
         <div class="swiper-container review-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide slide swiper-slide-next" role="group" aria-label="3 / 3"
-                    data-swiper-slide-index="2" style="width: 458px; margin-right: 20px;">
-                    <div class="user">
-                        <img src="../static/images/user1.jpg" alt="">
-                        <div class="user-info">
-                            <h3>Rendy Bima</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis adipisci vel amet eos earum
-                        dolor corrupti ea assumenda magnam officia.</p>
-                </div>
-
-                <div class="swiper-slide slide slide swiper-slide-next" role="group" aria-label="3 / 3"
-                    data-swiper-slide-index="2" style="width: 458px; margin-right: 20px;"">
-                    <div class=" user">
-                    <img src="../static/images/user2.jpg" alt="">
-                    <div class="user-info">
-                        <h3>M Arif</h3>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste alias beatae consectetur tempora
-                    nobis animi, perferendis maiores dolorem sint eum.</p>
+                <!-- SHOW COMMENT -->
             </div>
-
-            <div class="swiper-slide slide slide swiper-slide-next" role="group" aria-label="3 / 3"
-                data-swiper-slide-index="2" style="width: 458px; margin-right: 20px;"">
-                    <div class=" user">
-                <img src="../static/images/user3.jpg" alt="">
-                <div class="user-info">
-                    <h3>Nada Anis</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </div>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure illum, similique consectetur sunt
-                optio labore iste provident eaque voluptatum dolor?</p>
-        </div>
-        </div>
         </div>
     </section>
     <!-- review section end -->
 
     <!-- footer section start -->
     <footer>
-        <section class="footer" id="footer">
+        <section class="footer" id="footer" style="background-color: #eee;">
 
             <div class="box-container">
 
@@ -199,17 +204,20 @@
 
                 <div class="box">
                     <h3>Follow Us</h3>
-                    <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span class="fab fa-facebook fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://twitter.com/rdybima"><span class="fab fa-twitter fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span class="fab fa-instagram fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span class="fab fa-linkedin fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span
+                            class="fab fa-facebook fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://twitter.com/rdybima"><span
+                            class="fab fa-twitter fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span
+                            class="fab fa-instagram fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span
+                            class="fab fa-linkedin fa-2x"></span></a>
                 </div>
             </div>
             <div class="credit"> copyright @2023 Kelompok 3 | Fullstack Web Development | LearningX</div>
         </section>
     </footer>
     <!-- footer section end -->
-
 </body>
 
 </html>
