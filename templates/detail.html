@@ -7,22 +7,17 @@
     <title>Menu | {{ menu.judul }}</title>
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="../static/style.css">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- Bootstrap requirement jQuery pada posisi pertama, kemudian Popper.js, danyang terakhit Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-        </script>
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../static/style.css">
+
     <!--aos-->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -97,7 +92,19 @@
             window.location.href = '/';
         }
 
-    
+        let menu_id = '{{ menu._id }}';
+        function hapus(menu_id) {
+            $.ajax({
+                url: '/delete/' + menu_id,
+                type: 'DELETE',
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.replace("/homepageadmin");
+                    // window.location.reload();
+                }
+            });
+        }
+
     </script>
 
 
@@ -135,16 +142,15 @@
                 <span>Harga 1 porsi : </span><span style="color: #A66417;"><b>Rp. {{menu.harga}}-,</span></b>
             </div>
             <div class="map" style="margin-top: 20px;">
-                <iframe
-                    src="{{menu.lokasi}}"
-                    width="90%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="{{menu.lokasi}}" width="90%" height="450" style="border:0;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/homepageadmin"
-                    style="color: white;">Close</a></button>
+                    style="color: black;">Close</a></button>
             <button type="edit" class="btn btn-secondary edit-button" style="float: right;"><a href="/edit"
-                    style="color: white;">Edit</a></button>
-                    <button type="edit" class="btn btn-secondary edit-button" style="float: right;">Delete</button>
+                    style="color: black;">Edit</a></button>
+            <button onclick="hapus(menu_id)" type="edit" class="btn btn-secondary edit-button"
+                style="float: right; color: black;">Delete</button>
         </div>
     </section>
 
@@ -184,10 +190,14 @@
 
                 <div class="box">
                     <h3>Follow Us</h3>
-                    <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span class="fab fa-facebook fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://twitter.com/rdybima"><span class="fab fa-twitter fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span class="fab fa-instagram fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span class="fab fa-linkedin fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span
+                            class="fab fa-facebook fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://twitter.com/rdybima"><span
+                            class="fab fa-twitter fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span
+                            class="fab fa-instagram fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span
+                            class="fab fa-linkedin fa-2x"></span></a>
                 </div>
             </div>
             <div class="credit"> copyright @2023 Kelompok 3 | Fullstack Web Development | LearningX</div>

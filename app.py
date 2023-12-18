@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 
 app=Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['UPLOAD_FOLDER'] = './static/profile_pics'
+app.config['UPLOAD_FOLDER'] = './static/posting'
 
 SECRET_KEY = "SPARTA"
 
@@ -207,11 +207,6 @@ def kategori_jajanan():
     return render_template("kategori_jajanan.html")
 
 
-# @app.route("/detail_menu")
-# def detail_menu():
-#     menu = list(db.menu.find({},{'_id': False}))
-#     return render_template("detail.html", menu = menu)
-
 @app.route("/detail_menu/<id>", methods=['GET'])
 def detail_menu(id):
     menu = db.menu.find_one({'_id': ObjectId(id)})
@@ -230,8 +225,8 @@ def popular():
 def edit():
     return render_template("edit.html")
 
-@app.route('/update_menu', methods=['POST'])
-def update():
+@app.route('/update_menu/<id>', methods=['POST'])
+def update(id):
     # sample_receive = request.form.get('sample_give')
     # print(sample_receive)
     judul = request.form.get('judul')
@@ -242,6 +237,8 @@ def update():
     
     today = datetime.now()
     mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
+
+    existing_menu = db.menu.find_one({'_id': ObjectId(id)})
    
     file = request.files["image"]
     extension = file.filename.split('.')[-1] 
@@ -295,7 +292,19 @@ def show_komentar():
 def homepageadmin():
     return render_template("homepage_admin.html")
 
+@app.route('/delete/<menu_id>', methods=['DELETE'])
+def delete(menu_id):
+    # existing_menu = db.menu.find_one({'_id': ObjectId(menu_id)})
+    db.menu.delete_one(
+        {'_id': ObjectId(menu_id)}) 
+    return jsonify({'msg':'Deleted success'})
+    # existing_file_path = existing_menu['file']
+    # os.remove(existing_file_path)
+    # result = db.menu.delete_one({'_id': ObjectId(menu_id)})
+    # if result.deleted_count > 0:
+    #     return jsonify({'message': 'Menu deleted successfully'})
+    # else:
+    #     return jsonify({'message': 'Menu not found'})
 
-    
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
