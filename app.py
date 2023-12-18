@@ -25,6 +25,10 @@ TOKEN_KEY = 'mytoken'
 def index():
     return render_template("index.html")
 
+@app.route("/homepage")
+def homepage():
+    return render_template("homepage.html")
+
 @app.route("/home")
 def home():
     token_receive = request.cookies.get("mytoken")
@@ -193,15 +197,20 @@ def kategori_jajanan():
 
 @app.route("/detail_menu")
 def detail_menu():
-    return render_template("detail_menu.html")
-
+    menu = list(db.menu.find({},{'_id': False}))
+    return render_template("detail_menu.html", menu = menu)
 @app.route("/popular")
 def popular():
     return render_template("popular.html")
 
+# @app.route("/detail")
+# def detail():
+#     return render_template("detail.html")
+
 @app.route("/detail")
 def detail():
-    return render_template("detail.html")
+    menu = list(db.menu.find({},{'_id': False}))
+    return render_template("detail.html", menu = menu)
 
 @app.route("/edit")
 def edit():

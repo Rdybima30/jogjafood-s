@@ -137,25 +137,21 @@
     <!-- detail section start -->
     <section class="detail" id="detail">
         <div class="container">
-            <h3><b>Gudeg</b></h3>
-            <div class="image"></div>
+            {% for menu in menu %}
+            <h3><b>{{menu.judul}}</b></h3>
+            <div class="image" src="../static/posting/{{menu.file }}"></div>
+            <!-- <img class="image" src="../{{ menu.file }}" alt="Image"> -->
             <div class="deskripsi" style="color: black;">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam dolorum libero, pariatur et
-                    repellendus eaque perferendis deleniti suscipit, aliquam enim ea sunt minus aspernatur. Dolore,
-                    veniam voluptas ullam magnam mollitia recusandae impedit magni incidunt non quo iure soluta
-                    veritatis est nihil deserunt sunt error maxime ipsam tempore tenetur accusamus fugiat omnis quam.
-                    Eligendi ea quisquam sequi excepturi odio facilis iusto earum quos vero velit. Magni magnam,
-                    blanditiis praesentium ducimus voluptatibus minus, expedita fuga numquam illo non facilis repellat
-                    mollitia quam tempore dolor tempora eos! At iure soluta explicabo necessitatibus illum aliquam
-                    accusamus eligendi, laboriosam repudiandae ea! Incidunt illo magnam in!</p>
-                <span>Harga 1 porsi : </span><span style="color: #A66417;"><b>Rp. 20.000-,</span></b>
+                <p>{{menu.deskripsi}}</p>
+                <span>Harga 1 porsi : </span><span style="color: #A66417;"><b>Rp. {{menu.harga}}-,</span></b>
             </div>
             <div class="map" style="margin-top: 20px;">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d63244.68358388054!2d110.33881171572837!3d-7.811753474761609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e9!4m0!4m5!1s0x2e7a57700347cb51%3A0xed0b575329f65c3d!2sJl.%20Prof.%20DR.%20Soepomo%20Sh%20UH%2FIV%20No.36%2C%20Warungboto%2C%20Kec.%20Umbulharjo%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta%2055164!3m2!1d-7.8057352!2d110.3901916!5e0!3m2!1sid!2sid!4v1702042706900!5m2!1sid!2sid"
+                    src="{{menu.lokasi}}"
                     width="90%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
+            {%endfor%}
             <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/"
                     style="color: white;">Close</a></button>
         </div>
