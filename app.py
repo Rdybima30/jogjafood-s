@@ -221,43 +221,58 @@ def detail(id):
 def popular():
     return render_template("popular.html")
 
-@app.route("/edit")
-def edit():
-    return render_template("edit.html")
+@app.route("/edit/<id>", methods=['GET'])
+def edit(id):
+    menu = db.menu.find_one({'_id': ObjectId(id)})
+    return render_template("edit.html", menu=menu)
 
-@app.route('/update_menu/<id>', methods=['POST'])
+@app.route('/update_menu/<id>', methods=['PUT'])
 def update(id):
-    # sample_receive = request.form.get('sample_give')
-    # print(sample_receive)
     judul = request.form.get('judul')
-    kategori = request.form.get('kategori')
     deskripsi = request.form.get('deskripsi')
-    harga = request.form.get('harga')
     lokasi = request.form.get('lokasi')
-    
+    harga = request.form.get('harga')
+    kategori = int(request.form.get('kategori'))
     today = datetime.now()
     mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
 
+    # Get data lama dari database
     existing_menu = db.menu.find_one({'_id': ObjectId(id)})
-   
-    file = request.files["image"]
-    extension = file.filename.split('.')[-1] 
-    filename = f'post-{mytime}.{extension}'
-    save_to = f'static/posting/{filename}'
-    file.save(save_to)
+    if existing_menu is None:
+        return jsonify({'error': 'Menu not found'}), 404
 
+    # Handle upload file baru
+    file = request.files.get('file')
+    if file:
+        # Hapus file lama jika file dirubah
+        if 'file' in existing_menu:
+            existing_file_path = existing_menu['file']
+            if os.path.exists(existing_file_path):
+                os.remove(existing_file_path)
 
-    doc = {
-        'judul': judul,
-        'file': filename,
-        'kategori': kategori,
-        'deskripsi': deskripsi,
-        'harga': harga,
-        'lokasi': lokasi
-    }
+        extension = file.filename.split('.')[-1]
+        filename = f'post-{mytime}.{extension}'
+        save_to = f'static/posting/{filename}'
+        file.save(save_to)
 
-    db.menu.update_one({"judul": judul}, {"$set": doc})
-    return jsonify({'msg': 'Data was edited!!'})
+    else:
+        # Menjaga file jika tidak ada file baru
+        filename = existing_menu.get('file')
+
+    # Update data database
+    db.menu.update_one(
+        {'_id': ObjectId(id)}, {
+            '$set': {
+            'judul': judul,
+            'file': filename,
+            'kategori': kategori,
+            'deskripsi': deskripsi,
+            'harga': harga,
+            'lokasi': lokasi
+            }
+        }
+    )
+    return jsonify({'msg': 'Menu was updated!'})
 
 @app.route("/review")
 def review():
@@ -298,13 +313,28 @@ def delete(menu_id):
     db.menu.delete_one(
         {'_id': ObjectId(menu_id)}) 
     return jsonify({'msg':'Deleted success'})
-    # existing_file_path = existing_menu['file']
-    # os.remove(existing_file_path)
-    # result = db.menu.delete_one({'_id': ObjectId(menu_id)})
-    # if result.deleted_count > 0:
-    #     return jsonify({'message': 'Menu deleted successfully'})
-    # else:
-    #     return jsonify({'message': 'Menu not found'})
+
+@app.route('/search', methods=['GET'])
+def search():
+    query_params = request.args
+    search_query = query_params.get('q', '')
+
+    menu = db.menu.find(
+        {'name': {'$regex': search_query, '$options': 'i'}})
+
+    menu_list = []
+    for attraction in menu:
+        menu_list.append({
+            'id': str(attraction['_id']),
+            'judul': attraction['judul'],
+            'kategori': attraction['kategori'],
+            'deskripsi': attraction['deskripsi'],
+            'image': attraction['file'],
+            'harga': attraction['harga'],
+            'lokasi': attraction['lokasi']
+        })
+
+    return jsonify(menu_list)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

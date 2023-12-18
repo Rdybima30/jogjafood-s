@@ -138,17 +138,16 @@
     <section class="detail" id="detail">
         <div class="container">
             <h3><b>{{ menu.judul }}</b></h3>
-            <div class="image" src="../static/posting/'+menu.image+'"></div>
-            <!-- <img class="image" src="../{{ menu.file }}" alt="Image"> -->
+            <div class="image" src="../static/posting/'+menu.image+'">
+                <img class="image" src="../static/posting/{{ menu.file }}" alt="image">
+            </div>
             <div class="deskripsi" style="color: black;">
                 <p>{{menu.deskripsi}}</p>
                 <span>Harga 1 porsi : </span><span style="color: #A66417;"><b>Rp. {{menu.harga}}-,</span></b>
             </div>
             <div class="map" style="margin-top: 20px;">
-                <iframe
-                    src="{{menu.lokasi}}"
-                    width="90%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="{{menu.lokasi}}" width="90%" height="450" style="border:0;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/homepage"
                     style="color: white;">Close</a></button>
@@ -191,10 +190,14 @@
 
                 <div class="box">
                     <h3>Follow Us</h3>
-                    <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span class="fab fa-facebook fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://twitter.com/rdybima"><span class="fab fa-twitter fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span class="fab fa-instagram fa-2x"></span></a>
-                    <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span class="fab fa-linkedin fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span
+                            class="fab fa-facebook fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://twitter.com/rdybima"><span
+                            class="fab fa-twitter fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span
+                            class="fab fa-instagram fa-2x"></span></a>
+                    <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span
+                            class="fab fa-linkedin fa-2x"></span></a>
                 </div>
             </div>
             <div class="credit"> copyright @2023 Kelompok 3 | Fullstack Web Development | LearningX</div>

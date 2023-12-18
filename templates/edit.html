@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Menu Detail</title>
+    <title>Edit | {{ menu.judul }}</title>
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- JS -->
@@ -22,13 +22,36 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        function update_menu() {
-            let judul = $("#judul").val();
-            let kategori = $("#kategori").val();
-            let deskripsi = $("#deskripsi").val();
-            let harga = $("#harga").val();
-            let lokasi = $("#lokasi").val();
-            let file = $("#image")[0].files[0];
+        let menu_id = '{{ menu._id }}';
+        function update_menu(menu_id) {
+            let judul = $('#judul').val();
+            if (!judul) {
+                return alert('Insert your judul')
+            }
+            let kategori = $('#kategori').val();
+            if (!kategori) {
+                return alert('Insert your kategori')
+            }
+
+            let deskripsi = $('#deskripsi').val();
+            if (!deskripsi) {
+                return alert('Insert your deskripsi')
+            }
+
+            let harga = $('#harga').val();
+            if (!harga) {
+                return alert('Insert your harga')
+            }
+
+            let lokasi = $('#lokasi').val();
+            if (!lokasi) {
+                return alert('Insert your lokasi')
+            }
+
+            let file = $("#image").prop("files")[0];
+            if (!file) {
+                return alert('Insert your image')
+            }
 
             let form_data = new FormData();
 
@@ -41,23 +64,20 @@
             console.log(image, judul, kategori, deskripsi, harga, lokasi);
 
             $.ajax({
-                type: "POST",
-                url: "/update_menu",
+                type: "PUT",
+                url: "/update_menu" + menu_id,
                 data: form_data,
-                cache: false,
                 contentType: false,
                 processData: false,
                 success: function (response) {
                     if (response["result"] === "success") {
                         alert(response["msg"]);
-                        window.location.reload();
+                        window.location.reload('/homepageadmin');
                     }
                 },
             });
         }
-    </script>
-    <script>
-        // AOS.init();
+
         function logout() {
             $.removeCookie('mytoken');
             alert('success remove cookie')
@@ -131,7 +151,7 @@
             </div>
             <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/addmenu"
                     style="color: black;">Cancel</a></button>
-            <button onclick="update()" type="submit" class="btn btn-secondary save-button"
+            <button onclick="update_menu(menu_id)" type="submit" class="btn btn-secondary save-button"
                 style="float: right; color: black;">Edit</button>
             <!-- </form> -->
         </div>
