@@ -9,15 +9,23 @@ import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 
-app=Flask(__name__)
-app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['UPLOAD_FOLDER'] = './static/posting'
 
 SECRET_KEY = "SPARTA"
 
-MONGODB_CONNECTION_STRING = "mongodb+srv://nadaanis526:nada2626anis@cluster0.zp4go5w.mongodb.net/"
-client = MongoClient(MONGODB_CONNECTION_STRING)
-db = client.jogjafood
+# MONGODB_CONNECTION_STRING = "mongodb+srv://nadaanis526:nada2626anis@cluster0.zp4go5w.mongodb.net/"
+# client = MongoClient(MONGODB_CONNECTION_STRING)
+# db = client.jogjafood
+
+MONGODB_URI = os.environ.get("MONGODB_URI")
+DB_NAME =  os.environ.get("DB_NAME")
+
+client = MongoClient(MONGODB_URI)
+db = client[DB_NAME]
+
+app=Flask(__name__)
+
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['UPLOAD_FOLDER'] = './static/posting'
 
 SECRET_KEY = 'secret1141'
 TOKEN_KEY = 'mytoken'
