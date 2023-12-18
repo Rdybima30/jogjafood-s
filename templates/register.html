@@ -32,23 +32,35 @@
 
     <script>
         function register() {
-            $.ajax({
-                type: "POST",
-                url: "/api/register",
-                data: {
-                    id_give: $("#userid").val(),
-                    pw_give: $("#userpw").val(),
-                    email_give: $("#useremail").val(),
-                },
-                success: function (response) {
-                    if (response["result"] === "success") {
-                        alert("User registration complete!");
-                        window.location.href = "/login";
-                    } else {
-                        alert(response["msg"]);
-                    }
-                },
-            });
+            let id = $("#userid").val();
+            let password = $("#userpw").val();
+            let email = $("#useremail").val();
+
+            if (id == '' || email == '' || password == '' ) {
+                alert(
+                    'Oops, Data tidak lengkap!',
+                )
+            } else if ( email.indexOf('@') === -1){
+               alert("Email harus mengandung simbol '@'")
+            }else {
+                $.ajax({
+                    type: "POST",
+                    url: "/api/register",
+                    data: {
+                        id_give: id,
+                        pw_give: password,
+                        email_give: email,
+                    },
+                    success: function (response) {
+                        if (response["result"] === "success") {
+                            alert("User registration complete!");
+                            window.location.href = "/login";
+                        } else {
+                            alert(response["msg"]);
+                        }
+                    },
+                });
+            }
         }
 
         function ClearInputs() {
