@@ -36,30 +36,27 @@
 
     function listing() {
       $.ajax({
-        type: 'GET',
-        url: '/showmenu',
-        data: {},
+        url: "/showmenu",
+        type: "GET",
+        dataType: "json",
         success: function (response) {
-          // console.log(response);
-          let menu = response['menu'];
-          for (let i = 0; i < menu.length; i++) {
-            let judul = menu[i]['judul'];
-            let deskripsi = menu[i]['deskripsi'];
-            let file = menu[i]['file'];
-            let temp_html = `
-                    <div class="box">
-                      <img src="../static/posting/${file}" alt="Klepon">
-                      <div class="box-content">
-                        <a href="/detail"><h3>${judul}</h3></a>
-                        <p>${deskripsi}</p>
-                      </div>
-                    </div>
-                    `;
-            $('.menu-container').append(temp_html);
+          let menuList = response;
+          // Clear the existing content
+          $('.box-container').empty();
+
+          // Iterate over the wisataList and append the data to the div
+          for (let i = 0; i < menuList.length; i++) {
+            let menu = menuList[i];
+            let html = '<div class="box"><div class="image"><img src="../static/posting/' + menu.image + '" alt=""></div><div class="content"><a href="/detail/'+ menu.id +'"><h3>' + menu.judul + '</h3></a><p>' + menu.deskripsi + '</p><span class="price" style="font-size: 18px">Rp. ' + menu.harga + '</span></div></div>';
+            $('.menu-container').append(html);
           }
+        },
+        error: function (xhr, status, error) {
+          console.log(error);
         }
       });
     }
+
   </script>
   <script>
     AOS.init();

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
+    <title>{{ menu.judul }}</title>
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -91,7 +91,7 @@
         }
     </style>
     <script>
-        AOS.init();
+        // AOS.init();
         function logout() {
             $.removeCookie('mytoken');
             alert('success remove cookie')
@@ -137,9 +137,8 @@
     <!-- detail section start -->
     <section class="detail" id="detail">
         <div class="container">
-            {% for menu in menu %}
-            <h3><b>{{menu.judul}}</b></h3>
-            <div class="image" src="../static/posting/{{menu.file }}"></div>
+            <h3><b>{{ menu.judul }}</b></h3>
+            <div class="image" src="../static/posting/'+menu.image+'"></div>
             <!-- <img class="image" src="../{{ menu.file }}" alt="Image"> -->
             <div class="deskripsi" style="color: black;">
                 <p>{{menu.deskripsi}}</p>
@@ -151,8 +150,7 @@
                     width="90%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            {%endfor%}
-            <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/"
+            <button type="close" class="btn btn-secondary close-button" style="float: right;"><a href="/homepage"
                     style="color: white;">Close</a></button>
         </div>
     </section>

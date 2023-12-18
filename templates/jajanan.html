@@ -39,38 +39,29 @@
 
         function listing() {
             $.ajax({
-                type: 'GET',
-                url: '/showmenu',
-                data: {},
+                url: "/showmenu",
+                type: "GET",
+                dataType: "json",
                 success: function (response) {
-                    // console.log(response);
-                    let menu = response['menu'];
-                    for (let i = 0; i < menu.length; i++) {
-                        let judul = menu[i]['judul'];
-                        let deskripsi = menu[i]['deskripsi'];
-                        let file = menu[i]['file'];
-                        let harga = menu[i]['harga'];
-                        let kategori = menu[i]['kategori'];
+                    let menuList = response;
+                    // Clear the existing content
+                    $('.box-container').empty();
 
-                        if (kategori == 'Jajanan') {
-                            let temp_html = `
-                                <div class="box">
-                                    <div class="image">
-                                        <img src="../static/posting/${file}" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <a href="/detail_menu"><h3>${judul}</h3></a>
-                                        <p> ${deskripsi}</p>
-                                        <span class="price" style="font-size: 18px">Rp. ${harga}</span>
-                                    </div>
-                                </div>
-                            `;
-                            $('.box-container').append(temp_html);
+                    // Iterate over the wisataList and append the data to the div
+                    for (let i = 0; i < menuList.length; i++) {
+                        let menu = menuList[i];
+                        if (menu.kategori == 'Jajanan' || menu.kategori == 'jajanan') {
+                            let html = '<div class="box"><div class="image"><img src="../static/posting/' + menu.image + '" alt=""></div><div class="content"><a href="/detail_menu/'+ menu.id +'"><h3>' + menu.judul + '</h3></a><p>' + menu.deskripsi + '</p><span class="price" style="font-size: 18px">Rp. ' + menu.harga + '</span></div></div>';
+                            $('.box-container').append(html);
                         }
                     }
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
                 }
             });
         }
+
     </script>
     <script>
         AOS.init();
@@ -150,7 +141,7 @@
                 <a href="#">Depok</a>
                 <a href="#">Kulon Progo</a>
             </div>
-        
+
             <div class="box">
                 <h3>Quick Links</h3>
                 <a href="#home">home</a>
@@ -158,7 +149,7 @@
                 <a href="#popular">Popular</a>
                 <a href="#review">FAQ & Review</a>
             </div>
-        
+
             <div class="box">
                 <h3>Contact Info</h3>
                 <a href="#">+62821-1359-1641</a>
@@ -167,13 +158,17 @@
                 <a href="#">jogjafood@gmail.com</a>
                 <a href="#">Bantul, Yogyakarta - 1000001</a>
             </div>
-        
+
             <div class="box">
                 <h3>Follow Us</h3>
-                <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span class="fab fa-facebook fa-2x"></span></a>
-                <a class="social-media-icon" href="https://twitter.com/rdybima"><span class="fab fa-twitter fa-2x"></span></a>
-                <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span class="fab fa-instagram fa-2x"></span></a>
-                <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span class="fab fa-linkedin fa-2x"></span></a>
+                <a class="social-media-icon" href="https://www.facebook.com/damarwulan.damarwulan.79/photos"><span
+                        class="fab fa-facebook fa-2x"></span></a>
+                <a class="social-media-icon" href="https://twitter.com/rdybima"><span
+                        class="fab fa-twitter fa-2x"></span></a>
+                <a class="social-media-icon" href="https://www.instagram.com/ndaa.an_"><span
+                        class="fab fa-instagram fa-2x"></span></a>
+                <a class="social-media-icon" href="https://www.linkedin.com/in/nada-anis-nurjihan-aa7a09196/"><span
+                        class="fab fa-linkedin fa-2x"></span></a>
             </div>
 
         </div>

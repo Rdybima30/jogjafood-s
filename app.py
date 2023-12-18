@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 from pymongo import MongoClient
 import jwt
+from bson import ObjectId
 from datetime import datetime, timedelta
 import hashlib
 from werkzeug.utils import secure_filename
@@ -165,10 +166,21 @@ def posting():
 
 @app.route('/showmenu', methods=['GET'])
 def show_menu():
-    # sample_receive = request.args.get('sample_give')
-    # print(sample_receive)
-    menu = list(db.menu.find({},{'_id': False}))
-    return jsonify({'menu': menu})
+    # menu = list(db.menu.find({},{'_id': False}))
+    # return jsonify({'menu': menu})
+    menu = db.menu.find()
+    menu_list = []
+    for attraction in menu:
+        menu_list.append({
+            'id': str(attraction['_id']),
+            'judul': attraction['judul'],
+            'kategori': attraction['kategori'],
+            'deskripsi': attraction['deskripsi'],
+            'image': attraction['file'],
+            'harga': attraction['harga'],
+            'lokasi': attraction['lokasi']
+        })
+    return jsonify(menu_list)
 
 @app.route("/kategori")
 def kategori():
@@ -195,22 +207,24 @@ def kategori_jajanan():
     return render_template("kategori_jajanan.html")
 
 
-@app.route("/detail_menu")
-def detail_menu():
-    menu = list(db.menu.find({},{'_id': False}))
+# @app.route("/detail_menu")
+# def detail_menu():
+#     menu = list(db.menu.find({},{'_id': False}))
+#     return render_template("detail.html", menu = menu)
+
+@app.route("/detail_menu/<id>", methods=['GET'])
+def detail_menu(id):
+    menu = db.menu.find_one({'_id': ObjectId(id)})
     return render_template("detail_menu.html", menu = menu)
+
+@app.route("/detail/<id>", methods=['GET'])
+def detail(id):
+    menu = db.menu.find_one({'_id': ObjectId(id)})
+    return render_template("detail.html", menu = menu)
+
 @app.route("/popular")
 def popular():
     return render_template("popular.html")
-
-# @app.route("/detail")
-# def detail():
-#     return render_template("detail.html")
-
-@app.route("/detail")
-def detail():
-    menu = list(db.menu.find({},{'_id': False}))
-    return render_template("detail.html", menu = menu)
 
 @app.route("/edit")
 def edit():
