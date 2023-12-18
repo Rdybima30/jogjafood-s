@@ -135,8 +135,9 @@
     <section class="detail" id="detail">
         <div class="container">
             <h3><b>{{ menu.judul }}</b></h3>
-            <div class="image" src="../static/posting/'+menu.image+'"></div>
-            <!-- <img class="image" src="../{{ menu.file }}" alt="Image"> -->
+            <div class="image" src="../static/posting/'+menu.image+'">
+                <img class="image" src="../static/posting/{{ menu.file }}" alt="image">
+            </div>
             <div class="deskripsi" style="color: black;">
                 <p>{{menu.deskripsi}}</p>
                 <span>Harga 1 porsi : </span><span style="color: #A66417;"><b>Rp. {{menu.harga}}-,</span></b>
